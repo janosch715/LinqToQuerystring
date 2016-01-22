@@ -1,9 +1,6 @@
 Linq to Querystring v0.7.0
 ==========================
 
-## New Website
-Linq to Querystring now has a project page! Please refer to http://roysvork.github.io/LinqToQuerystring/ for documentation and samples.
-
 ## Installation
 
 * Nuget package: https://nuget.org/packages/LinqToQuerystring/
