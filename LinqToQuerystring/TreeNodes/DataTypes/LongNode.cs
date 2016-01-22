@@ -1,6 +1,7 @@
 ﻿namespace LinqToQuerystring.TreeNodes.DataTypes
 {
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -17,7 +18,8 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Constant(Convert.ToInt64(this.Text.Replace("L", string.Empty)));
+            var value = Convert.ToInt64(this.Text.Replace("L", string.Empty), CultureInfo.InvariantCulture);
+            return Expression.Constant(value);
         }
     }
 }
