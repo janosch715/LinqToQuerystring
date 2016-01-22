@@ -31,12 +31,12 @@
 
             if (query == null)
             {
-                throw new ArgumentNullException("query", "Query cannot be null");
+                throw new ArgumentNullException(nameof(query));
             }
 
             if (queryString == null)
             {
-                throw new ArgumentNullException("queryString", "Query String cannot be null");
+                throw new ArgumentNullException(nameof(queryString));
             }
 
             if (queryString.StartsWith("?"))
