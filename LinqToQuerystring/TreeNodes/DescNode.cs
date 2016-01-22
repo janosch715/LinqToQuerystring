@@ -11,8 +11,8 @@
 
     public class DescNode : ExplicitOrderByBase
     {
-        public DescNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public DescNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

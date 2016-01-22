@@ -11,15 +11,22 @@
 
     public class LongNode : TreeNode
     {
-        public LongNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public LongNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public long Value
+           => Convert.ToInt64(this.Text.Replace("L", string.Empty), CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToInt64(this.Text.Replace("L", string.Empty), CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

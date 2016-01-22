@@ -10,8 +10,8 @@
 
     public class SkipNode : SingleChildNode
     {
-        public SkipNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public SkipNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -33,6 +33,11 @@
             }
 
             return -1;
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.ChildNode.RetrieveStaticValue();
         }
     }
 }

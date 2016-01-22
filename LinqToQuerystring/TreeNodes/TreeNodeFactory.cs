@@ -1,23 +1,18 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
-    using System;
-
     using Antlr.Runtime.Tree;
 
-    using LinqToQuerystring.TreeNodes.Aggregates;
-    using LinqToQuerystring.TreeNodes.Comparisons;
-    using LinqToQuerystring.TreeNodes.DataTypes;
-    using LinqToQuerystring.TreeNodes.Functions;
+    using Aggregates;
+    using Comparisons;
+    using DataTypes;
+    using Functions;
 
     public class TreeNodeFactory : CommonTreeAdaptor
     {
-        private readonly Type inputType;
-
         private readonly bool forceDynamicProperties;
 
-        public TreeNodeFactory(Type inputType, bool forceDynamicProperties)
+        public TreeNodeFactory(bool forceDynamicProperties)
         {
-            this.inputType = inputType;
             this.forceDynamicProperties = forceDynamicProperties;
         }
 
@@ -31,121 +26,121 @@
             switch (token.Type)
             {
                 case LinqToQuerystringLexer.TOP:
-                    return new TopNode(inputType, token, this);
+                    return new TopNode(token, this);
                 case LinqToQuerystringLexer.SKIP:
-                    return new SkipNode(inputType, token, this);
+                    return new SkipNode(token, this);
                 case LinqToQuerystringLexer.ORDERBY:
-                    return new OrderByNode(inputType, token, this);
+                    return new OrderByNode(token, this);
                 case LinqToQuerystringLexer.FILTER:
-                    return new FilterNode(inputType, token, this);
+                    return new FilterNode(token, this);
                 case LinqToQuerystringLexer.SELECT:
-                    return new SelectNode(inputType, token, this);
+                    return new SelectNode(token, this);
                 case LinqToQuerystringLexer.INLINECOUNT:
-                    return new InlineCountNode(inputType, token, this);
+                    return new InlineCountNode(token, this);
                 case LinqToQuerystringLexer.EXPAND:
-                    return new ExpandNode(inputType, token, this);
+                    return new ExpandNode(token, this);
                 case LinqToQuerystringLexer.NOT:
-                    return new NotNode(inputType, token, this);
+                    return new NotNode(token, this);
                 case LinqToQuerystringLexer.AND:
-                    return new AndNode(inputType, token, this);
+                    return new AndNode(token, this);
                 case LinqToQuerystringLexer.OR:
-                    return new OrNode(inputType, token, this);
+                    return new OrNode(token, this);
                 case LinqToQuerystringLexer.EQUALS:
-                    return new EqualsNode(inputType, token, this);
+                    return new EqualsNode(token, this);
                 case LinqToQuerystringLexer.NOTEQUALS:
-                    return new NotEqualsNode(inputType, token, this);
+                    return new NotEqualsNode(token, this);
                 case LinqToQuerystringLexer.GREATERTHAN:
-                    return new GreaterThanNode(inputType, token, this);
+                    return new GreaterThanNode(token, this);
                 case LinqToQuerystringLexer.GREATERTHANOREQUAL:
-                    return new GreaterThanOrEqualNode(inputType, token, this);
+                    return new GreaterThanOrEqualNode(token, this);
                 case LinqToQuerystringLexer.LESSTHAN:
-                    return new LessThanNode(inputType, token, this);
+                    return new LessThanNode(token, this);
                 case LinqToQuerystringLexer.LESSTHANOREQUAL:
-                    return new LessThanOrEqualNode(inputType, token, this);
+                    return new LessThanOrEqualNode(token, this);
                 case LinqToQuerystringLexer.STARTSWITH:
-                    return new StartsWithNode(inputType, token, this);
+                    return new StartsWithNode(token, this);
                 case LinqToQuerystringLexer.ENDSWITH:
-                    return new EndsWithNode(inputType, token, this);
+                    return new EndsWithNode(token, this);
                 case LinqToQuerystringLexer.SUBSTRINGOF:
-                    return new SubstringOfNode(inputType, token, this);
+                    return new SubstringOfNode(token, this);
                 case LinqToQuerystringLexer.TOLOWER:
-                    return new ToLowerNode(inputType, token, this);
+                    return new ToLowerNode(token, this);
                 case LinqToQuerystringLexer.TOUPPER:
-                    return new ToUpperNode(inputType, token, this);
+                    return new ToUpperNode(token, this);
                 case LinqToQuerystringLexer.YEAR:
-                    return new YearNode(inputType, token, this);
+                    return new YearNode(token, this);
                 case LinqToQuerystringLexer.YEARS:
-                    return new YearsNode(inputType, token, this);
+                    return new YearsNode(token, this);
                 case LinqToQuerystringLexer.MONTH:
-                    return new MonthNode(inputType, token, this);
+                    return new MonthNode(token, this);
                 case LinqToQuerystringLexer.DAY:
-                    return new DayNode(inputType, token, this);
+                    return new DayNode(token, this);
                 case LinqToQuerystringLexer.DAYS:
-                    return new DaysNode(inputType, token, this);
+                    return new DaysNode(token, this);
                 case LinqToQuerystringLexer.HOUR:
-                    return new HourNode(inputType, token, this);
+                    return new HourNode(token, this);
                 case LinqToQuerystringLexer.HOURS:
-                    return new HoursNode(inputType, token, this);
+                    return new HoursNode(token, this);
                 case LinqToQuerystringLexer.MINUTE:
-                    return new MinuteNode(inputType, token, this);
+                    return new MinuteNode(token, this);
                 case LinqToQuerystringLexer.MINUTES:
-                    return new MinutesNode(inputType, token, this);
+                    return new MinutesNode(token, this);
                 case LinqToQuerystringLexer.SECOND:
-                    return new SecondNode(inputType, token, this);
+                    return new SecondNode(token, this);
                 case LinqToQuerystringLexer.SECONDS:
-                    return new SecondsNode(inputType, token, this);
+                    return new SecondsNode(token, this);
                 case LinqToQuerystringLexer.ANY:
-                    return new AnyNode(inputType, token, this);
+                    return new AnyNode(token, this);
                 case LinqToQuerystringLexer.ALL:
-                    return new AllNode(inputType, token, this);
+                    return new AllNode(token, this);
                 case LinqToQuerystringLexer.COUNT:
-                    return new CountNode(inputType, token, this);
+                    return new CountNode(token, this);
                 case LinqToQuerystringLexer.AVERAGE:
-                    return new AverageNode(inputType, token, this);
+                    return new AverageNode(token, this);
                 case LinqToQuerystringLexer.MAX:
-                    return new MaxNode(inputType, token, this);
+                    return new MaxNode(token, this);
                 case LinqToQuerystringLexer.MIN:
-                    return new MinNode(inputType, token, this);
+                    return new MinNode(token, this);
                 case LinqToQuerystringLexer.SUM:
-                    return new SumNode(inputType, token, this);
+                    return new SumNode(token, this);
                 case LinqToQuerystringLexer.ALIAS:
-                    return new AliasNode(inputType, token, this);
+                    return new AliasNode(token, this);
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
-                    return new DynamicIdentifierNode(inputType, token, this);
+                    return new DynamicIdentifierNode(token, this);
                 case LinqToQuerystringLexer.IDENTIFIER:
-                    if (forceDynamicProperties)
+                    if (this.forceDynamicProperties)
                     {
-                        return new DynamicIdentifierNode(inputType, token, this);
+                        return new DynamicIdentifierNode(token, this);
                     }
-                    return new IdentifierNode(inputType, token, this);
+                    return new IdentifierNode(token, this);
                 case LinqToQuerystringLexer.STRING:
-                    return new StringNode(inputType, token, this);
+                    return new StringNode(token, this);
                 case LinqToQuerystringLexer.BOOL:
-                    return new BoolNode(inputType, token, this);
+                    return new BoolNode(token, this);
                 case LinqToQuerystringLexer.INT:
-                    return new IntNode(inputType, token, this);
+                    return new IntNode(token, this);
                 case LinqToQuerystringLexer.DATETIME:
-                    return new DateTimeNode(inputType, token, this);
+                    return new DateTimeNode(token, this);
                 case LinqToQuerystringLexer.DOUBLE:
-                    return new DoubleNode(inputType, token, this);
+                    return new DoubleNode(token, this);
                 case LinqToQuerystringLexer.SINGLE:
-                    return new SingleNode(inputType, token, this);
+                    return new SingleNode(token, this);
                 case LinqToQuerystringLexer.DECIMAL:
-                    return new DecimalNode(inputType, token, this);
+                    return new DecimalNode(token, this);
                 case LinqToQuerystringLexer.LONG:
-                    return new LongNode(inputType, token, this);
+                    return new LongNode(token, this);
                 case LinqToQuerystringLexer.BYTE:
-                    return new ByteNode(inputType, token, this);
+                    return new ByteNode(token, this);
                 case LinqToQuerystringLexer.GUID:
-                    return new GuidNode(inputType, token, this);
+                    return new GuidNode(token, this);
                 case LinqToQuerystringLexer.DESC:
-                    return new DescNode(inputType, token, this);
+                    return new DescNode(token, this);
                 case LinqToQuerystringLexer.ASC:
-                    return new AscNode(inputType, token, this);
+                    return new AscNode(token, this);
                 case LinqToQuerystringLexer.NULL:
-                    return new NullNode(inputType, token, this);
+                    return new NullNode(token, this);
                 case LinqToQuerystringLexer.IGNORED:
-                    return new IgnoredNode(inputType, token, this);
+                    return new IgnoredNode(token, this);
             }
 
             return null;

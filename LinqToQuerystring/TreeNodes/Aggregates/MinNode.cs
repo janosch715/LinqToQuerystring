@@ -11,7 +11,7 @@
 
     public class MinNode : TreeNode
     {
-        public MinNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public MinNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
@@ -27,6 +27,11 @@
             }
 
             return Expression.Call(typeof(Enumerable), "Min", new[] { underlyingType }, property);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

@@ -69,7 +69,7 @@
             var lexer = new LinqToQuerystringLexer(input);
             var tokStream = new CommonTokenStream(lexer);
 
-            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory(inputType, forceDynamicProperties) };
+            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory(forceDynamicProperties) };
 
             var result = parser.prog();
 

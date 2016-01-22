@@ -7,19 +7,26 @@
 
     using Antlr.Runtime;
 
-    using LinqToQuerystring.TreeNodes.Base;
+    using Base;
 
     public class BoolNode : TreeNode
     {
-        public BoolNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public BoolNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public bool Value =>
+            Convert.ToBoolean(this.Text, CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToBoolean(this.Text, CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

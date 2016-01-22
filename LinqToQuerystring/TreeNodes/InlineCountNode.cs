@@ -10,8 +10,8 @@
 
     public class InlineCountNode : SingleChildNode
     {
-        public InlineCountNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public InlineCountNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

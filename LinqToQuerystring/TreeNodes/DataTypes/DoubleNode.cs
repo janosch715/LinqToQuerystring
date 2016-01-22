@@ -11,15 +11,22 @@
 
     public class DoubleNode : TreeNode
     {
-        public DoubleNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public DoubleNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public double Value
+            => Convert.ToDouble(this.Text.Replace("d", string.Empty), CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToDouble(this.Text.Replace("d", string.Empty), CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

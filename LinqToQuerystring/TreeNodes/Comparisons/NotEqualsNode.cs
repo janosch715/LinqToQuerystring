@@ -10,8 +10,8 @@
 
     public class NotEqualsNode : TwoChildNode
     {
-        public NotEqualsNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public NotEqualsNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -23,6 +23,11 @@
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return ApplyWithNullAsValidAlternative(Expression.NotEqual, leftExpression, rightExpression);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

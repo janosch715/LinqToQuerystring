@@ -8,7 +8,7 @@ namespace LinqToQuerystring.TreeNodes.Base
 
     public abstract class QueryModifier : TreeNode
     {
-        protected QueryModifier(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        protected QueryModifier(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

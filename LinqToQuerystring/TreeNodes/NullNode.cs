@@ -10,7 +10,7 @@
 
     public class NullNode : TreeNode
     {
-        public NullNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public NullNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

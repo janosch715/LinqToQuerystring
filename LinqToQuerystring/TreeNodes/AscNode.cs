@@ -11,8 +11,8 @@
 
     public class AscNode : ExplicitOrderByBase
     {
-        public AscNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public AscNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -38,6 +38,11 @@
 
             var lambda = Expression.Lambda(childExpression, new[] { parameter as ParameterExpression });
             return Expression.Call(typeof(Queryable), methodName, new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

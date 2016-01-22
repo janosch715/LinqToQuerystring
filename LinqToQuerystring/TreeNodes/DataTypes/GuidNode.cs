@@ -10,15 +10,22 @@
 
     public class GuidNode : TreeNode
     {
-        public GuidNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public GuidNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public Guid Value
+            => new Guid(this.Text.Replace("guid'", string.Empty).Replace("'", string.Empty));
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var guidText = this.Text.Replace("guid'", string.Empty).Replace("'", string.Empty);
-            return Expression.Constant(new Guid(guidText));
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

@@ -10,8 +10,8 @@
 
     public class StartsWithNode : TwoChildNode
     {
-        public StartsWithNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public StartsWithNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

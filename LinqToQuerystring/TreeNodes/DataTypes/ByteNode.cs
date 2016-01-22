@@ -10,14 +10,22 @@
 
     public class ByteNode : TreeNode
     {
-        public ByteNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public ByteNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public byte Value
+            => Convert.ToByte(this.Text.Replace("0x", string.Empty), 16);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            return Expression.Constant(Convert.ToByte(this.Text.Replace("0x", string.Empty), 16));
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

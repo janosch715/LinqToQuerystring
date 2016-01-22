@@ -10,8 +10,8 @@
 
     public class SubstringOfNode : TwoChildNode
     {
-        public SubstringOfNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public SubstringOfNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

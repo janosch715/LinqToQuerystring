@@ -12,7 +12,7 @@
 
     public class AllNode : TreeNode
     {
-        public AllNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public AllNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
@@ -42,6 +42,11 @@
                 filter.BuildLinqExpression(query, inputType, expression, parameter), new[] { parameter });
 
             return Expression.Call(typeof(Enumerable), "All", new[] { underlyingType }, property, lambda);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

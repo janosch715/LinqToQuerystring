@@ -10,8 +10,8 @@
 
     public class AndNode : TwoChildNode
     {
-        public AndNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public AndNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -20,6 +20,11 @@
             return Expression.AndAlso(
                 this.LeftNode.BuildLinqExpression(query, inputType, expression, item),
                 this.RightNode.BuildLinqExpression(query, inputType, expression, item));
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

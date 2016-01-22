@@ -12,7 +12,7 @@
 
     public class CountNode : TreeNode
     {
-        public CountNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public CountNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
@@ -35,6 +35,11 @@
             }
 
             return Expression.Call(typeof(Enumerable), "Count", new[] { underlyingType }, property);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

@@ -11,19 +11,32 @@
 
     public class DateTimeNode : TreeNode
     {
-        public DateTimeNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public DateTimeNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public DateTime Value
+        {
+            get
+            {
+                var dateText = this.Text
+                    .Replace("datetime'", string.Empty)
+                    .Replace("'", string.Empty)
+                    .Replace(".", ":");
+
+                return DateTime.Parse(dateText, null, DateTimeStyles.RoundtripKind);
+            }
+        }
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var dateText = this.Text
-                .Replace("datetime'", string.Empty)
-                .Replace("'", string.Empty)
-                .Replace(".", ":");
+            return Expression.Constant(this.Value);
+        }
 
-            return Expression.Constant(DateTime.Parse(dateText, null, DateTimeStyles.RoundtripKind));
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

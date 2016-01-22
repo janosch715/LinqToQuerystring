@@ -11,8 +11,8 @@
 
     public class OrderByNode : QueryModifier
     {
-        public OrderByNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public OrderByNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

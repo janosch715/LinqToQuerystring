@@ -11,15 +11,22 @@
 
     public class IntNode : TreeNode
     {
-        public IntNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public IntNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public int Value
+            => Convert.ToInt32(this.Text, CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToInt32(this.Text, CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

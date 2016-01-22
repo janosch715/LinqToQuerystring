@@ -10,7 +10,7 @@
 
     public class AliasNode : TreeNode
     {
-        public AliasNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public AliasNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

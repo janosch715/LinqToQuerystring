@@ -10,7 +10,7 @@
 
     public class IdentifierNode : TreeNode
     {
-        public IdentifierNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public IdentifierNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

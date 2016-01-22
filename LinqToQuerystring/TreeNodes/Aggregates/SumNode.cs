@@ -10,7 +10,7 @@
 
     public class SumNode : TreeNode
     {
-        public SumNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public SumNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

@@ -10,8 +10,8 @@
 
     public class EqualsNode : TwoChildNode
     {
-        public EqualsNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public EqualsNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -45,6 +45,11 @@
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return ApplyEnsuringNullablesHaveValues(Expression.Equal, leftExpression, rightExpression);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

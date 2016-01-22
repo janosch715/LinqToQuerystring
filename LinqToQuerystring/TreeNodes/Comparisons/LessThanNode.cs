@@ -10,8 +10,8 @@
 
     public class LessThanNode : TwoChildNode
     {
-        public LessThanNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public LessThanNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -23,6 +23,11 @@
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return ApplyEnsuringNullablesHaveValues(Expression.LessThan, leftExpression, rightExpression);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

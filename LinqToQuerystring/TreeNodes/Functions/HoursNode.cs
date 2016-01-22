@@ -11,8 +11,8 @@ namespace LinqToQuerystring.TreeNodes.Functions
 
     public class HoursNode : SingleChildNode
     {
-        public HoursNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public HoursNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

@@ -7,7 +7,7 @@
 
     public abstract class SingleChildNode : TreeNode
     {
-        protected SingleChildNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        protected SingleChildNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

@@ -56,6 +56,11 @@
 
         public abstract Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item);
 
+        public virtual object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
+        }
+
         public virtual int CompareTo(TreeNode other)
         {
             return 0;

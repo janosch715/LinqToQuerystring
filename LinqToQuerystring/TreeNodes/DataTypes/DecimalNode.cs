@@ -11,15 +11,22 @@
 
     public class DecimalNode : TreeNode
     {
-        public DecimalNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public DecimalNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public decimal Value 
+            => Convert.ToDecimal(this.Text.Replace("m", string.Empty), CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToDecimal(this.Text.Replace("m", string.Empty), CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }

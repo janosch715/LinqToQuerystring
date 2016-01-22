@@ -10,8 +10,8 @@
 
     public class TopNode : SingleChildNode
     {
-        public TopNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public TopNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -23,6 +23,11 @@
                 new[] { query.ElementType },
                 query.Expression,
                 this.ChildNode.BuildLinqExpression(query, inputType, expression, item));
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.ChildNode.RetrieveStaticValue();
         }
 
         public override int CompareTo(TreeNode other)

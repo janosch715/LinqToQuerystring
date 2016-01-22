@@ -10,7 +10,7 @@
 
     public class IgnoredNode : TreeNode
     {
-        public IgnoredNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public IgnoredNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }

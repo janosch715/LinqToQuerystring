@@ -11,8 +11,8 @@
 
     public class MinutesNode : SingleChildNode
     {
-        public MinutesNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public MinutesNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

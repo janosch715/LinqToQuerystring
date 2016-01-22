@@ -10,8 +10,8 @@
 
     public class GreaterThanNode : TwoChildNode
     {
-        public GreaterThanNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public GreaterThanNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -23,6 +23,11 @@
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return ApplyEnsuringNullablesHaveValues(Expression.GreaterThan, leftExpression, rightExpression);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

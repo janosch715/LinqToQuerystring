@@ -10,8 +10,8 @@
 
     public class LessThanOrEqualNode : TwoChildNode
     {
-        public LessThanOrEqualNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public LessThanOrEqualNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
@@ -23,6 +23,11 @@
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return ApplyEnsuringNullablesHaveValues(Expression.LessThanOrEqual, leftExpression, rightExpression);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

@@ -9,8 +9,8 @@
 
     public class ExpandNode : QueryModifier
     {
-        public ExpandNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+        public ExpandNode(IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

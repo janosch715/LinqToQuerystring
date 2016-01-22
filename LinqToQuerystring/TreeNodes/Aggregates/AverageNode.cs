@@ -10,7 +10,7 @@
 
     public class AverageNode : TreeNode
     {
-        public AverageNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public AverageNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
@@ -19,6 +19,11 @@
         {
             var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(query, inputType, expression, item);
             return Expression.Call(typeof(Enumerable), "Average", null, property);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

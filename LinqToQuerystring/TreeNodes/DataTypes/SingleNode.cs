@@ -11,15 +11,22 @@
 
     public class SingleNode : TreeNode
     {
-        public SingleNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public SingleNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
+        public float Value
+           => Convert.ToSingle(this.Text.Replace("f", string.Empty), CultureInfo.InvariantCulture);
+
         public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var value = Convert.ToSingle(this.Text.Replace("f", string.Empty), CultureInfo.InvariantCulture);
-            return Expression.Constant(value);
+            return Expression.Constant(this.Value);
+        }
+
+        public override object RetrieveStaticValue()
+        {
+            return this.Value;
         }
     }
 }
