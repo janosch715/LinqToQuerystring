@@ -16,9 +16,9 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var childexpression = this.ChildNode.BuildLinqExpression(query, expression, item);
+            var childexpression = this.ChildNode.BuildLinqExpression(query, inputType, expression, item);
 
             if (!typeof(DateTime).IsAssignableFrom(childexpression.Type))
             {

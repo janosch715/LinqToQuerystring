@@ -11,11 +11,11 @@
     public class ByteNode : TreeNode
     {
         public ByteNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             return Expression.Constant(Convert.ToByte(this.Text.Replace("0x", string.Empty), 16));
         }

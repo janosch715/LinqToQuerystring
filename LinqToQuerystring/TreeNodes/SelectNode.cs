@@ -17,7 +17,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var fixedexpr = Expression.Call(typeof(Queryable), "Cast", new[] { inputType }, query.Expression);
 
@@ -28,7 +28,7 @@
 
             MethodInfo addMethod = typeof(Dictionary<string, object>).GetMethod("Add");
             var elements = this.ChildNodes.Select(
-                o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(query, childExpression, parameter), typeof(object))));
+                o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(query, inputType, childExpression, parameter), typeof(object))));
 
             var newDictionary = Expression.New(typeof(Dictionary<string, object>));
             var init = Expression.ListInit(newDictionary, elements);

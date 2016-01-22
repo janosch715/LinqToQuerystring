@@ -8,7 +8,7 @@
     public abstract class TwoChildNode : TreeNode
     {
         protected TwoChildNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 

@@ -7,7 +7,7 @@
     public abstract class ExplicitOrderByBase : TreeNode
     {
         protected ExplicitOrderByBase(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
             this.IsFirstChild = false;
         }

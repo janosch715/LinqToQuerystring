@@ -15,10 +15,10 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
+            var leftExpression = this.LeftNode.BuildLinqExpression(query, inputType, expression, item);
+            var rightExpression = this.RightNode.BuildLinqExpression(query, inputType, expression, item);
 
             if (!typeof(string).IsAssignableFrom(leftExpression.Type))
             {

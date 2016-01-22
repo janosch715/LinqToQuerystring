@@ -12,11 +12,11 @@
     public class DoubleNode : TreeNode
     {
         public DoubleNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var value = Convert.ToDouble(this.Text.Replace("d", string.Empty), CultureInfo.InvariantCulture);
             return Expression.Constant(value);

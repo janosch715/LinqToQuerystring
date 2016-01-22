@@ -78,13 +78,13 @@
             {
                 if (!(singleNode is SelectNode) && !(singleNode is InlineCountNode))
                 {
-                    BuildQuery(singleNode, ref queryResult, ref constrainedQuery);
+                    BuildQuery(singleNode, inputType, ref queryResult, ref constrainedQuery);
                     return constrainedQuery;
                 }
 
                 if (singleNode is SelectNode)
                 {
-                    return ProjectQuery(constrainedQuery, singleNode);
+                    return ProjectQuery(constrainedQuery, inputType, singleNode);
                 }
 
                 return PackageResults(queryResult, constrainedQuery);
@@ -99,13 +99,13 @@
                 // These should always come first
                 foreach (var node in children.Where(o => !(o is SelectNode) && !(o is InlineCountNode)))
                 {
-                    BuildQuery(node, ref queryResult, ref constrainedQuery);
+                    BuildQuery(node, inputType, ref queryResult, ref constrainedQuery);
                 }
 
                 var selectNode = children.FirstOrDefault(o => o is SelectNode);
                 if (selectNode != null)
                 {
-                    constrainedQuery = ProjectQuery(constrainedQuery, selectNode);
+                    constrainedQuery = ProjectQuery(constrainedQuery, inputType, selectNode);
                 }
 
                 var inlineCountNode = children.FirstOrDefault(o => o is InlineCountNode);
@@ -118,7 +118,7 @@
             return constrainedQuery;
         }
 
-        private static void BuildQuery(TreeNode node, ref IQueryable queryResult, ref IQueryable constrainedQuery)
+        private static void BuildQuery(TreeNode node, Type inputType, ref IQueryable queryResult, ref IQueryable constrainedQuery)
         {
             var type = queryResult.Provider.GetType().Name;
 
@@ -128,7 +128,7 @@
 
             if (mappings != null)
             {
-                node = mappings.MapNode(node, queryResult.Expression);
+                node = mappings.MapNode(node, inputType, queryResult.Expression);
             }
 
             if (!(node is TopNode) && !(node is SkipNode))
@@ -136,29 +136,29 @@
                 var modifier = node as QueryModifier;
                 if (modifier != null)
                 {
-                    queryResult = modifier.ModifyQuery(queryResult);
+                    queryResult = modifier.ModifyQuery(queryResult, inputType);
                 }
                 else
                 {
                     queryResult = queryResult.Provider.CreateQuery(
-                        node.BuildLinqExpression(queryResult, queryResult.Expression));
+                        node.BuildLinqExpression(queryResult, inputType, queryResult.Expression, null));
                 }
             }
 
             var queryModifier = node as QueryModifier;
             if (queryModifier != null)
             {
-                constrainedQuery = queryModifier.ModifyQuery(constrainedQuery);
+                constrainedQuery = queryModifier.ModifyQuery(constrainedQuery, inputType);
             }
             else
             {
                 constrainedQuery =
                     constrainedQuery.Provider.CreateQuery(
-                        node.BuildLinqExpression(constrainedQuery, constrainedQuery.Expression));
+                        node.BuildLinqExpression(constrainedQuery, inputType, constrainedQuery.Expression, null));
             }
         }
 
-        private static IQueryable ProjectQuery(IQueryable constrainedQuery, TreeNode node)
+        private static IQueryable ProjectQuery(IQueryable constrainedQuery, Type inputType, TreeNode node)
         {
             // TODO: Find a solution to the following:
             // Currently the only way to perform the SELECT part of the query is to call ToList and then project onto a dictionary. Two main problems:
@@ -169,7 +169,7 @@
             var result = constrainedQuery.GetEnumeratedQuery().AsQueryable();
             return
                 result.Provider.CreateQuery<Dictionary<string, object>>(
-                    node.BuildLinqExpression(result, result.Expression));
+                    node.BuildLinqExpression(result, inputType, result.Expression, null));
 
         }
 

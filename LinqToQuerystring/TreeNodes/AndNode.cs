@@ -15,11 +15,11 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             return Expression.AndAlso(
-                this.LeftNode.BuildLinqExpression(query, expression, item),
-                this.RightNode.BuildLinqExpression(query, expression, item));
+                this.LeftNode.BuildLinqExpression(query, inputType, expression, item),
+                this.RightNode.BuildLinqExpression(query, inputType, expression, item));
         }
     }
 }

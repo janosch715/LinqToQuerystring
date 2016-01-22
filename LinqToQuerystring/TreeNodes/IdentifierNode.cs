@@ -11,18 +11,18 @@
     public class IdentifierNode : TreeNode
     {
         public IdentifierNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var property = Expression.Property(item, this.Text);
 
             var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
-                return child.BuildLinqExpression(query, expression, property);
+                return child.BuildLinqExpression(query, inputType, expression, property);
             }
 
             return property;

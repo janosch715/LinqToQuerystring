@@ -11,11 +11,11 @@
     public class DynamicIdentifierNode : TreeNode
     {
         public DynamicIdentifierNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var key = this.Text.Trim(new[] { '[', ']' });
             var property = Expression.Call(item, "get_Item", null, Expression.Constant(key));
@@ -23,7 +23,7 @@
             var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
-                return child.BuildLinqExpression(query, expression, property);
+                return child.BuildLinqExpression(query, inputType, expression, property);
             }
 
             return property;

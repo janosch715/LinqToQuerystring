@@ -14,7 +14,7 @@
         {
         }
 
-        public override IQueryable ModifyQuery(IQueryable query)
+        public override IQueryable ModifyQuery(IQueryable query, Type inputType)
         {
             throw new NotSupportedException("The Expand query option is not supported by this provder");
         }

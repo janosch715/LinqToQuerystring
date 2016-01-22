@@ -11,11 +11,11 @@
     public class StringNode : TreeNode
     {
         public StringNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var text = this.Text.Trim('\'');
             text = text.Replace(@"\\", @"\");

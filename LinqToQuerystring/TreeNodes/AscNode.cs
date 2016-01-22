@@ -16,7 +16,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var parameter = item ?? Expression.Parameter(inputType, "o");
             Expression childExpression = expression;
@@ -24,7 +24,7 @@
             var temp = parameter;
             foreach (var child in this.ChildNodes)
             {
-                childExpression = child.BuildLinqExpression(query, childExpression, temp);
+                childExpression = child.BuildLinqExpression(query, inputType, childExpression, temp);
                 temp = childExpression;
             }
 

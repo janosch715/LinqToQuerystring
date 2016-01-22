@@ -15,10 +15,10 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
-            var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
+            var leftExpression = this.LeftNode.BuildLinqExpression(query, inputType, expression, item);
+            var rightExpression = this.RightNode.BuildLinqExpression(query, inputType, expression, item);
 
             // Nasty workaround to avoid comparison of Aggregate functions to true or false which breaks Entity framework
             if (leftExpression.Type == typeof(bool) && rightExpression.Type == typeof(bool) && rightExpression is ConstantExpression)

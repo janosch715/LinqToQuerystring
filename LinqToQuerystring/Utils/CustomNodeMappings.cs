@@ -11,11 +11,11 @@
 
     public class CustomNodeMappings : Dictionary<int, Func<Type, IToken, TreeNodeFactory, TreeNode>>
     {
-        public TreeNode MapNode(TreeNode node, Expression expression)
+        public TreeNode MapNode(TreeNode node, Type inputType, Expression expression)
         {
             if (this.ContainsKey(node.Type))
             {
-                var mappedNode = this[node.Type](node.inputType, node.payload, node.factory);
+                var mappedNode = this[node.Type](inputType, node.payload, node.factory);
                 mappedNode.AddChildren(node.Children);
                 return mappedNode;
             }

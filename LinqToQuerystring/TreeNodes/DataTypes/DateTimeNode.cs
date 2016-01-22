@@ -12,11 +12,11 @@
     public class DateTimeNode : TreeNode
     {
         public DateTimeNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var dateText = this.Text
                 .Replace("datetime'", string.Empty)

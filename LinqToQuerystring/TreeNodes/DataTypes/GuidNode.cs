@@ -11,11 +11,11 @@
     public class GuidNode : TreeNode
     {
         public GuidNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
-            : base(inputType, payload, treeNodeFactory)
+            : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var guidText = this.Text.Replace("guid'", string.Empty).Replace("'", string.Empty);
             return Expression.Constant(new Guid(guidText));

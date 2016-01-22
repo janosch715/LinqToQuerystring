@@ -15,7 +15,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             throw new NotSupportedException(
                 "InlineCountNode is just a placeholder and should be handled differently in Extensions.cs");

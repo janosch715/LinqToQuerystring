@@ -15,11 +15,11 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
         {
             var parameter = item ?? Expression.Parameter(inputType, "o");
             var lambda = Expression.Lambda(
-                this.ChildNode.BuildLinqExpression(query, expression, parameter), new[] { parameter as ParameterExpression });
+                this.ChildNode.BuildLinqExpression(query, inputType, expression, parameter), new[] { parameter as ParameterExpression });
 
             return Expression.Call(typeof(Queryable), "Where", new[] { query.ElementType }, query.Expression, lambda);
         }
