@@ -17,24 +17,24 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var fixedexpr = Expression.Call(typeof(Queryable), "Cast", new[] { inputType }, query.Expression);
+            var fixedexpr = Expression.Call(typeof(Queryable), "Cast", new[] { buildLinqExpressionParameters.InputType }, buildLinqExpressionParameters.Query.Expression);
 
-            query = query.Provider.CreateQuery(fixedexpr);
+            buildLinqExpressionParameters.Query = buildLinqExpressionParameters.Query.Provider.CreateQuery(fixedexpr);
 
-            var parameter = item ?? Expression.Parameter(inputType, "o");
+            var parameter = buildLinqExpressionParameters.Item ?? Expression.Parameter(buildLinqExpressionParameters.InputType, "o");
             Expression childExpression = fixedexpr;
 
             MethodInfo addMethod = typeof(Dictionary<string, object>).GetMethod("Add");
             var elements = this.ChildNodes.Select(
-                o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(query, inputType, childExpression, parameter), typeof(object))));
+                o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(new BuildLinqExpressionParameters(buildLinqExpressionParameters.Query, buildLinqExpressionParameters.InputType, childExpression, parameter)), typeof(object))));
 
             var newDictionary = Expression.New(typeof(Dictionary<string, object>));
             var init = Expression.ListInit(newDictionary, elements);
 
             var lambda = Expression.Lambda(init, parameter as ParameterExpression);
-            return Expression.Call(typeof(Queryable), "Select", new[] { query.ElementType, typeof(Dictionary<string, object>) }, query.Expression, lambda);
+            return Expression.Call(typeof(Queryable), "Select", new[] { buildLinqExpressionParameters.Query.ElementType, typeof(Dictionary<string, object>) }, buildLinqExpressionParameters.Query.Expression, lambda);
         }
 
         public override int CompareTo(TreeNode other)

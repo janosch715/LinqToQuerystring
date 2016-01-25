@@ -16,7 +16,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             throw new NotSupportedException(
                 "Orderby is just a placeholder and should be handled differently in Extensions.cs");
@@ -37,7 +37,14 @@
 
             foreach (var child in explicitOrderByNodes)
             {
-                queryresult = queryresult.Provider.CreateQuery(child.BuildLinqExpression(queryresult, inputType, queryresult.Expression, null));
+                var newBuildLinqExpressionParameters =
+                    new BuildLinqExpressionParameters(
+                        queryresult,
+                        inputType,
+                        queryresult.Expression,
+                        null);
+
+                queryresult = queryresult.Provider.CreateQuery(child.BuildLinqExpression(newBuildLinqExpressionParameters));
             }
 
             return queryresult;

@@ -7,7 +7,7 @@
 
     using Antlr.Runtime;
     using Antlr.Runtime.Tree;
-
+    
     public abstract class TreeNode : CommonTree, IComparable<TreeNode>
     {
         protected internal readonly IToken payload;
@@ -54,7 +54,7 @@
             }
         }
 
-        public abstract Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item);
+        public abstract Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters);
 
         public virtual object RetrieveStaticValue()
         {

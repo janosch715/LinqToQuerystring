@@ -15,10 +15,10 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var leftExpression = this.LeftNode.BuildLinqExpression(query, inputType, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression(query, inputType, expression, item);
+            var leftExpression = this.LeftNode.BuildLinqExpression(buildLinqExpressionParameters);
+            var rightExpression = this.RightNode.BuildLinqExpression(buildLinqExpressionParameters);
 
             if (!typeof(string).IsAssignableFrom(leftExpression.Type))
             {
@@ -30,7 +30,9 @@
                 rightExpression = Expression.Convert(rightExpression, typeof(string));
             }
 
-            return Expression.Call(rightExpression, "Contains", null, new[] { leftExpression });
+            var indexOf = Expression.Call(rightExpression, "IndexOf", null, leftExpression, Expression.Constant(StringComparison.InvariantCultureIgnoreCase));
+
+            return Expression.GreaterThanOrEqual(indexOf, Expression.Constant(0));
         }
     }
 }

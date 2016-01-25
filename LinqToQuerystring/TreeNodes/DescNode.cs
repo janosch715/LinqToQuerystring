@@ -16,29 +16,36 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var parameter = item ?? Expression.Parameter(inputType, "o");
-            Expression childExpression = expression;
+            var parameter = buildLinqExpressionParameters.Item ?? Expression.Parameter(buildLinqExpressionParameters.InputType, "o");
+            var childExpression = buildLinqExpressionParameters.Expression;
 
             var temp = parameter;
 
-            foreach (var child in this.ChildNodes.Cast<TreeNode>())
+            foreach (var child in this.ChildNodes)
             {
-                childExpression = child.BuildLinqExpression(query, inputType, childExpression, temp);
+                var newBuildLinqExpressionParameters =
+                    new BuildLinqExpressionParameters(
+                        buildLinqExpressionParameters.Query,
+                        buildLinqExpressionParameters.InputType,
+                        childExpression,
+                        temp);
+
+                childExpression = child.BuildLinqExpression(newBuildLinqExpressionParameters);
                 temp = childExpression;
             }
 
             Debug.Assert(childExpression != null, "childExpression should never be null");
 
             var methodName = "OrderByDescending";
-            if ((query.Provider.GetType().Name.Contains("DbQueryProvider") || query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
+            if ((buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("DbQueryProvider") || buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
             {
                 methodName = "ThenByDescending";
             }
 
             var lambda = Expression.Lambda(childExpression, new[] { parameter as ParameterExpression });
-            return Expression.Call(typeof(Queryable), methodName, new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
+            return Expression.Call(typeof(Queryable), methodName, new[] { buildLinqExpressionParameters.Query.ElementType, childExpression.Type }, buildLinqExpressionParameters.Query.Expression, lambda);
         }
     }
 }

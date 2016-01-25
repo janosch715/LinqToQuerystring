@@ -140,8 +140,15 @@
                 }
                 else
                 {
+                    var newBuildLinqExpressionParameters =
+                        new BuildLinqExpressionParameters(
+                            queryResult,
+                            inputType,
+                            queryResult.Expression,
+                            null);
+
                     queryResult = queryResult.Provider.CreateQuery(
-                        node.BuildLinqExpression(queryResult, inputType, queryResult.Expression, null));
+                        node.BuildLinqExpression(newBuildLinqExpressionParameters));
                 }
             }
 
@@ -152,9 +159,16 @@
             }
             else
             {
+                var newBuildLinqExpressionParameters =
+                        new BuildLinqExpressionParameters(
+                            constrainedQuery,
+                            inputType,
+                            constrainedQuery.Expression,
+                            null);
+
                 constrainedQuery =
                     constrainedQuery.Provider.CreateQuery(
-                        node.BuildLinqExpression(constrainedQuery, inputType, constrainedQuery.Expression, null));
+                        node.BuildLinqExpression(newBuildLinqExpressionParameters));
             }
         }
 
@@ -167,10 +181,15 @@
             // There is a solution involving reflection.emit, but is it worth it? Not sure...
 
             var result = constrainedQuery.GetEnumeratedQuery().AsQueryable();
-            return
-                result.Provider.CreateQuery<Dictionary<string, object>>(
-                    node.BuildLinqExpression(result, inputType, result.Expression, null));
 
+            var newBuildLinqExpressionParameters =
+                new BuildLinqExpressionParameters(
+                    result,
+                    inputType,
+                    result.Expression,
+                    null);
+
+            return result.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(newBuildLinqExpressionParameters));
         }
 
         private static object PackageResults(IQueryable query, IQueryable constrainedQuery)

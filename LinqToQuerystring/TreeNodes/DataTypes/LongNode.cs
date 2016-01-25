@@ -19,7 +19,7 @@
         public long Value
            => Convert.ToInt64(this.Text.Replace("L", string.Empty), CultureInfo.InvariantCulture);
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             return Expression.Constant(this.Value);
         }

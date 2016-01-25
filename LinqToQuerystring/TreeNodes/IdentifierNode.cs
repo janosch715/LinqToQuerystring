@@ -15,14 +15,21 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var property = Expression.Property(item, this.Text);
+            var property = Expression.Property(buildLinqExpressionParameters.Item, this.Text);
 
             var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
-                return child.BuildLinqExpression(query, inputType, expression, property);
+                var newBuildLinqExpressionParameters =
+                    new BuildLinqExpressionParameters(
+                        buildLinqExpressionParameters.Query,
+                        buildLinqExpressionParameters.InputType,
+                        buildLinqExpressionParameters.Expression,
+                        property);
+
+                return child.BuildLinqExpression(newBuildLinqExpressionParameters);
             }
 
             return property;

@@ -15,9 +15,14 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            return Expression.Call(typeof(Queryable), "Skip", new[] { query.ElementType }, query.Expression, this.ChildNode.BuildLinqExpression(query, inputType, expression, item));
+            return Expression.Call(
+                typeof(Queryable),
+                "Skip", 
+                new[] { buildLinqExpressionParameters.Query.ElementType }, 
+                buildLinqExpressionParameters.Query.Expression, 
+                this.ChildNode.BuildLinqExpression(buildLinqExpressionParameters));
         }
 
         public override int CompareTo(TreeNode other)

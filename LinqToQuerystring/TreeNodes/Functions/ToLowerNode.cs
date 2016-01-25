@@ -15,9 +15,9 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var childexpression = this.ChildNode.BuildLinqExpression(query, inputType, expression, item);
+            var childexpression = this.ChildNode.BuildLinqExpression(buildLinqExpressionParameters);
 
             if (!typeof(string).IsAssignableFrom(childexpression.Type))
             {

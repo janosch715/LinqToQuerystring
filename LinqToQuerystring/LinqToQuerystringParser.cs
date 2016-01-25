@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.0.2 D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g 2016-01-25 18:09:09
+// $ANTLR 3.5.0.2 D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g 2016-01-25 21:29:52
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -35,7 +35,7 @@ namespace  LinqToQuerystring
 public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALIAS", "ALL", "ALLPAGES", "AND", "ANY", "ASC", "ASSIGN", "AVERAGE", "BOOL", "BYTE", "COUNT", "DATETIME", "DAY", "DAYS", "DECIMAL", "DESC", "DOUBLE", "DYNAMICIDENTIFIER", "ENDSWITH", "EQUALS", "ESC_SEQ", "EXPAND", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "GUID", "HEX_DIGIT", "HEX_PAIR", "HOUR", "HOURS", "IDENTIFIER", "IGNORED", "INLINECOUNT", "INT", "LESSTHAN", "LESSTHANOREQUAL", "LONG", "MAX", "MIN", "MINUTE", "MINUTES", "MONTH", "NEWLINE", "NONE", "NOT", "NOTEQUALS", "NULL", "OCTAL_ESC", "OR", "ORDERBY", "SECOND", "SECONDS", "SELECT", "SINGLE", "SKIP", "SPACE", "STARTSWITH", "STRING", "SUBSTRINGOF", "SUM", "TOLOWER", "TOP", "TOUPPER", "UNICODE_ESC", "YEAR", "YEARS", "'&'", "'('", "')'", "','", "'/'", "':'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALIAS", "ALL", "ALLPAGES", "AND", "ANY", "ASC", "ASSIGN", "AVERAGE", "BOOL", "BYTE", "CONTAINS", "COUNT", "DATETIME", "DAY", "DAYS", "DECIMAL", "DESC", "DOUBLE", "DYNAMICIDENTIFIER", "ENDSWITH", "EQUALS", "ESC_SEQ", "EXPAND", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "GUID", "HEX_DIGIT", "HEX_PAIR", "HOUR", "HOURS", "IDENTIFIER", "IGNORED", "INLINECOUNT", "INT", "LESSTHAN", "LESSTHANOREQUAL", "LONG", "MAX", "MIN", "MINUTE", "MINUTES", "MONTH", "NEWLINE", "NONE", "NOT", "NOTEQUALS", "NULL", "OCTAL_ESC", "OR", "ORDERBY", "SECOND", "SECONDS", "SELECT", "SINGLE", "SKIP", "SPACE", "STARTSWITH", "STRING", "SUBSTRINGOF", "SUM", "TOLOWER", "TOP", "TOUPPER", "UNICODE_ESC", "YEAR", "YEARS", "'&'", "'('", "')'", "','", "'/'", "':'"
 	};
 	public const int EOF=-1;
 	public const int ALIAS=4;
@@ -48,68 +48,69 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	public const int AVERAGE=11;
 	public const int BOOL=12;
 	public const int BYTE=13;
-	public const int COUNT=14;
-	public const int DATETIME=15;
-	public const int DAY=16;
-	public const int DAYS=17;
-	public const int DECIMAL=18;
-	public const int DESC=19;
-	public const int DOUBLE=20;
-	public const int DYNAMICIDENTIFIER=21;
-	public const int ENDSWITH=22;
-	public const int EQUALS=23;
-	public const int ESC_SEQ=24;
-	public const int EXPAND=25;
-	public const int FILTER=26;
-	public const int GREATERTHAN=27;
-	public const int GREATERTHANOREQUAL=28;
-	public const int GUID=29;
-	public const int HEX_DIGIT=30;
-	public const int HEX_PAIR=31;
-	public const int HOUR=32;
-	public const int HOURS=33;
-	public const int IDENTIFIER=34;
-	public const int IGNORED=35;
-	public const int INLINECOUNT=36;
-	public const int INT=37;
-	public const int LESSTHAN=38;
-	public const int LESSTHANOREQUAL=39;
-	public const int LONG=40;
-	public const int MAX=41;
-	public const int MIN=42;
-	public const int MINUTE=43;
-	public const int MINUTES=44;
-	public const int MONTH=45;
-	public const int NEWLINE=46;
-	public const int NONE=47;
-	public const int NOT=48;
-	public const int NOTEQUALS=49;
-	public const int NULL=50;
-	public const int OCTAL_ESC=51;
-	public const int OR=52;
-	public const int ORDERBY=53;
-	public const int SECOND=54;
-	public const int SECONDS=55;
-	public const int SELECT=56;
-	public const int SINGLE=57;
-	public const int SKIP=58;
-	public const int SPACE=59;
-	public const int STARTSWITH=60;
-	public const int STRING=61;
-	public const int SUBSTRINGOF=62;
-	public const int SUM=63;
-	public const int TOLOWER=64;
-	public const int TOP=65;
-	public const int TOUPPER=66;
-	public const int UNICODE_ESC=67;
-	public const int YEAR=68;
-	public const int YEARS=69;
-	public const int T__70=70;
+	public const int CONTAINS=14;
+	public const int COUNT=15;
+	public const int DATETIME=16;
+	public const int DAY=17;
+	public const int DAYS=18;
+	public const int DECIMAL=19;
+	public const int DESC=20;
+	public const int DOUBLE=21;
+	public const int DYNAMICIDENTIFIER=22;
+	public const int ENDSWITH=23;
+	public const int EQUALS=24;
+	public const int ESC_SEQ=25;
+	public const int EXPAND=26;
+	public const int FILTER=27;
+	public const int GREATERTHAN=28;
+	public const int GREATERTHANOREQUAL=29;
+	public const int GUID=30;
+	public const int HEX_DIGIT=31;
+	public const int HEX_PAIR=32;
+	public const int HOUR=33;
+	public const int HOURS=34;
+	public const int IDENTIFIER=35;
+	public const int IGNORED=36;
+	public const int INLINECOUNT=37;
+	public const int INT=38;
+	public const int LESSTHAN=39;
+	public const int LESSTHANOREQUAL=40;
+	public const int LONG=41;
+	public const int MAX=42;
+	public const int MIN=43;
+	public const int MINUTE=44;
+	public const int MINUTES=45;
+	public const int MONTH=46;
+	public const int NEWLINE=47;
+	public const int NONE=48;
+	public const int NOT=49;
+	public const int NOTEQUALS=50;
+	public const int NULL=51;
+	public const int OCTAL_ESC=52;
+	public const int OR=53;
+	public const int ORDERBY=54;
+	public const int SECOND=55;
+	public const int SECONDS=56;
+	public const int SELECT=57;
+	public const int SINGLE=58;
+	public const int SKIP=59;
+	public const int SPACE=60;
+	public const int STARTSWITH=61;
+	public const int STRING=62;
+	public const int SUBSTRINGOF=63;
+	public const int SUM=64;
+	public const int TOLOWER=65;
+	public const int TOP=66;
+	public const int TOUPPER=67;
+	public const int UNICODE_ESC=68;
+	public const int YEAR=69;
+	public const int YEARS=70;
 	public const int T__71=71;
 	public const int T__72=72;
 	public const int T__73=73;
 	public const int T__74=74;
 	public const int T__75=75;
+	public const int T__76=76;
 
 	public LinqToQuerystringParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -217,7 +218,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 						try { DebugEnterDecision(1, false);
 						int LA1_1 = input.LA(1);
 
-						if ((LA1_1==70))
+						if ((LA1_1==71))
 						{
 							alt1 = 1;
 						}
@@ -231,7 +232,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 							// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:34:12: '&' ! param
 							{
 							DebugLocation(34, 15);
-							char_literal2=(IToken)Match(input,70,Follow._70_in_prog79); 
+							char_literal2=(IToken)Match(input,71,Follow._71_in_prog79); 
 							DebugLocation(34, 17);
 							PushFollow(Follow._param_in_prog82);
 							param3=param();
@@ -861,7 +862,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(6, false);
 				int LA6_1 = input.LA(1);
 
-				if ((LA6_1==73))
+				if ((LA6_1==74))
 				{
 					alt6 = 1;
 				}
@@ -875,7 +876,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:48:33: ',' ! propertyname[false]
 					{
 					DebugLocation(48, 36);
-					char_literal20=(IToken)Match(input,73,Follow._73_in_select183); 
+					char_literal20=(IToken)Match(input,74,Follow._74_in_select183); 
 					DebugLocation(48, 38);
 					PushFollow(Follow._propertyname_in_select186);
 					propertyname21=propertyname(false);
@@ -976,7 +977,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(7, false);
 				int LA7_1 = input.LA(1);
 
-				if ((LA7_1==73))
+				if ((LA7_1==74))
 				{
 					alt7 = 1;
 				}
@@ -990,7 +991,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:51:33: ',' ! propertyname[false]
 					{
 					DebugLocation(51, 36);
-					char_literal24=(IToken)Match(input,73,Follow._73_in_expand208); 
+					char_literal24=(IToken)Match(input,74,Follow._74_in_expand208); 
 					DebugLocation(51, 38);
 					PushFollow(Follow._propertyname_in_expand211);
 					propertyname25=propertyname(false);
@@ -1565,7 +1566,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 				alt13 = 1;
 			}
-			else if (((LA13_1>=BOOL && LA13_1<=BYTE)||(LA13_1>=DATETIME && LA13_1<=DECIMAL)||(LA13_1>=DOUBLE && LA13_1<=ENDSWITH)||LA13_1==GUID||(LA13_1>=HOUR && LA13_1<=IDENTIFIER)||LA13_1==INT||LA13_1==LONG||(LA13_1>=MINUTE && LA13_1<=MONTH)||LA13_1==NULL||(LA13_1>=SECOND && LA13_1<=SECONDS)||LA13_1==SINGLE||(LA13_1>=STARTSWITH && LA13_1<=SUBSTRINGOF)||LA13_1==TOLOWER||LA13_1==TOUPPER||(LA13_1>=YEAR && LA13_1<=YEARS)||LA13_1==71))
+			else if (((LA13_1>=BOOL && LA13_1<=CONTAINS)||(LA13_1>=DATETIME && LA13_1<=DECIMAL)||(LA13_1>=DOUBLE && LA13_1<=ENDSWITH)||LA13_1==GUID||(LA13_1>=HOUR && LA13_1<=IDENTIFIER)||LA13_1==INT||LA13_1==LONG||(LA13_1>=MINUTE && LA13_1<=MONTH)||LA13_1==NULL||(LA13_1>=SECOND && LA13_1<=SECONDS)||LA13_1==SINGLE||(LA13_1>=STARTSWITH && LA13_1<=SUBSTRINGOF)||LA13_1==TOLOWER||LA13_1==TOUPPER||(LA13_1>=YEAR && LA13_1<=YEARS)||LA13_1==72))
 			{
 				alt13 = 2;
 			}
@@ -1599,11 +1600,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(11, false);
 				int LA11_1 = input.LA(1);
 
-				if ((LA11_1==71))
+				if ((LA11_1==72))
 				{
 					alt11 = 1;
 				}
-				else if (((LA11_1>=BOOL && LA11_1<=BYTE)||(LA11_1>=DATETIME && LA11_1<=DECIMAL)||(LA11_1>=DOUBLE && LA11_1<=ENDSWITH)||LA11_1==GUID||(LA11_1>=HOUR && LA11_1<=IDENTIFIER)||LA11_1==INT||LA11_1==LONG||(LA11_1>=MINUTE && LA11_1<=MONTH)||LA11_1==NULL||(LA11_1>=SECOND && LA11_1<=SECONDS)||LA11_1==SINGLE||(LA11_1>=STARTSWITH && LA11_1<=SUBSTRINGOF)||LA11_1==TOLOWER||LA11_1==TOUPPER||(LA11_1>=YEAR && LA11_1<=YEARS)))
+				else if (((LA11_1>=BOOL && LA11_1<=CONTAINS)||(LA11_1>=DATETIME && LA11_1<=DECIMAL)||(LA11_1>=DOUBLE && LA11_1<=ENDSWITH)||LA11_1==GUID||(LA11_1>=HOUR && LA11_1<=IDENTIFIER)||LA11_1==INT||LA11_1==LONG||(LA11_1>=MINUTE && LA11_1<=MONTH)||LA11_1==NULL||(LA11_1>=SECOND && LA11_1<=SECONDS)||LA11_1==SINGLE||(LA11_1>=STARTSWITH && LA11_1<=SUBSTRINGOF)||LA11_1==TOLOWER||LA11_1==TOUPPER||(LA11_1>=YEAR && LA11_1<=YEARS)))
 				{
 					alt11 = 2;
 				}
@@ -1621,7 +1622,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:66:16: '(' filterexpression[subquery] ')'
 					{
 					DebugLocation(66, 16);
-					char_literal44=(IToken)Match(input,71,Follow._71_in_andexpression319); 
+					char_literal44=(IToken)Match(input,72,Follow._72_in_andexpression319); 
 					char_literal44_tree = (object)adaptor.Create(char_literal44);
 					adaptor.AddChild(root_0, char_literal44_tree);
 					DebugLocation(66, 20);
@@ -1631,7 +1632,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 					adaptor.AddChild(root_0, filterexpression45.Tree);
 					DebugLocation(66, 47);
-					char_literal46=(IToken)Match(input,72,Follow._72_in_andexpression324); 
+					char_literal46=(IToken)Match(input,73,Follow._73_in_andexpression324); 
 					char_literal46_tree = (object)adaptor.Create(char_literal46);
 					adaptor.AddChild(root_0, char_literal46_tree);
 
@@ -1670,11 +1671,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(12, false);
 				int LA12_1 = input.LA(1);
 
-				if ((LA12_1==71))
+				if ((LA12_1==72))
 				{
 					alt12 = 1;
 				}
-				else if (((LA12_1>=BOOL && LA12_1<=BYTE)||(LA12_1>=DATETIME && LA12_1<=DECIMAL)||(LA12_1>=DOUBLE && LA12_1<=ENDSWITH)||LA12_1==GUID||(LA12_1>=HOUR && LA12_1<=IDENTIFIER)||LA12_1==INT||LA12_1==LONG||(LA12_1>=MINUTE && LA12_1<=MONTH)||LA12_1==NULL||(LA12_1>=SECOND && LA12_1<=SECONDS)||LA12_1==SINGLE||(LA12_1>=STARTSWITH && LA12_1<=SUBSTRINGOF)||LA12_1==TOLOWER||LA12_1==TOUPPER||(LA12_1>=YEAR && LA12_1<=YEARS)))
+				else if (((LA12_1>=BOOL && LA12_1<=CONTAINS)||(LA12_1>=DATETIME && LA12_1<=DECIMAL)||(LA12_1>=DOUBLE && LA12_1<=ENDSWITH)||LA12_1==GUID||(LA12_1>=HOUR && LA12_1<=IDENTIFIER)||LA12_1==INT||LA12_1==LONG||(LA12_1>=MINUTE && LA12_1<=MONTH)||LA12_1==NULL||(LA12_1>=SECOND && LA12_1<=SECONDS)||LA12_1==SINGLE||(LA12_1>=STARTSWITH && LA12_1<=SUBSTRINGOF)||LA12_1==TOLOWER||LA12_1==TOUPPER||(LA12_1>=YEAR && LA12_1<=YEARS)))
 				{
 					alt12 = 2;
 				}
@@ -1692,7 +1693,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:67:5: '(' filterexpression[subquery] ')'
 					{
 					DebugLocation(67, 5);
-					char_literal48=(IToken)Match(input,71,Follow._71_in_andexpression336); 
+					char_literal48=(IToken)Match(input,72,Follow._72_in_andexpression336); 
 					char_literal48_tree = (object)adaptor.Create(char_literal48);
 					adaptor.AddChild(root_0, char_literal48_tree);
 					DebugLocation(67, 9);
@@ -1702,7 +1703,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 					adaptor.AddChild(root_0, filterexpression49.Tree);
 					DebugLocation(67, 36);
-					char_literal50=(IToken)Match(input,72,Follow._72_in_andexpression341); 
+					char_literal50=(IToken)Match(input,73,Follow._73_in_andexpression341); 
 					char_literal50_tree = (object)adaptor.Create(char_literal50);
 					adaptor.AddChild(root_0, char_literal50_tree);
 
@@ -1828,7 +1829,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					throw nvae;
 				}
 			}
-			else if ((LA15_1==EOF||(LA15_1>=EXPAND && LA15_1<=FILTER)||(LA15_1>=IGNORED && LA15_1<=INLINECOUNT)||LA15_1==ORDERBY||LA15_1==SELECT||LA15_1==SKIP||LA15_1==TOP||LA15_1==70||LA15_1==72))
+			else if ((LA15_1==EOF||(LA15_1>=EXPAND && LA15_1<=FILTER)||(LA15_1>=IGNORED && LA15_1<=INLINECOUNT)||LA15_1==ORDERBY||LA15_1==SELECT||LA15_1==SKIP||LA15_1==TOP||LA15_1==71||LA15_1==73))
 			{
 				alt15 = 2;
 			}
@@ -2121,6 +2122,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			try { DebugEnterDecision(16, false);
 			switch (input.LA(1))
 			{
+			case CONTAINS:
 			case DAY:
 			case DAYS:
 			case ENDSWITH:
@@ -2288,7 +2290,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 			root_0 = (object)adaptor.BecomeRoot(function57.Tree, root_0);
 			DebugLocation(82, 14);
-			char_literal58=(IToken)Match(input,71,Follow._71_in_functioncall489); 
+			char_literal58=(IToken)Match(input,72,Follow._72_in_functioncall489); 
 			char_literal58_tree = (object)adaptor.Create(char_literal58);
 			adaptor.AddChild(root_0, char_literal58_tree);
 			DebugLocation(82, 18);
@@ -2306,7 +2308,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(17, false);
 				int LA17_1 = input.LA(1);
 
-				if ((LA17_1==73))
+				if ((LA17_1==74))
 				{
 					alt17 = 1;
 				}
@@ -2320,7 +2322,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:82:34: ',' atom[subquery]
 					{
 					DebugLocation(82, 34);
-					char_literal60=(IToken)Match(input,73,Follow._73_in_functioncall495); 
+					char_literal60=(IToken)Match(input,74,Follow._74_in_functioncall495); 
 					char_literal60_tree = (object)adaptor.Create(char_literal60);
 					adaptor.AddChild(root_0, char_literal60_tree);
 					DebugLocation(82, 38);
@@ -2344,7 +2346,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			} finally { DebugExitSubRule(17); }
 
 			DebugLocation(82, 55);
-			char_literal62=(IToken)Match(input,72,Follow._72_in_functioncall502); 
+			char_literal62=(IToken)Match(input,73,Follow._73_in_functioncall502); 
 			char_literal62_tree = (object)adaptor.Create(char_literal62);
 			adaptor.AddChild(root_0, char_literal62_tree);
 
@@ -2408,7 +2410,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		object char_literal66_tree = default(object);
 		object SPACE67_tree = default(object);
 		object char_literal69_tree = default(object);
-		RewriteRuleITokenStream stream_74=new RewriteRuleITokenStream(adaptor,"token 74");
+		RewriteRuleITokenStream stream_75=new RewriteRuleITokenStream(adaptor,"token 75");
 		RewriteRuleITokenStream stream_ANY=new RewriteRuleITokenStream(adaptor,"token ANY");
 		RewriteRuleITokenStream stream_ALL=new RewriteRuleITokenStream(adaptor,"token ALL");
 		RewriteRuleITokenStream stream_COUNT=new RewriteRuleITokenStream(adaptor,"token COUNT");
@@ -2416,11 +2418,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_MIN=new RewriteRuleITokenStream(adaptor,"token MIN");
 		RewriteRuleITokenStream stream_SUM=new RewriteRuleITokenStream(adaptor,"token SUM");
 		RewriteRuleITokenStream stream_AVERAGE=new RewriteRuleITokenStream(adaptor,"token AVERAGE");
-		RewriteRuleITokenStream stream_71=new RewriteRuleITokenStream(adaptor,"token 71");
-		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
-		RewriteRuleITokenStream stream_75=new RewriteRuleITokenStream(adaptor,"token 75");
-		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
 		RewriteRuleITokenStream stream_72=new RewriteRuleITokenStream(adaptor,"token 72");
+		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
+		RewriteRuleITokenStream stream_76=new RewriteRuleITokenStream(adaptor,"token 76");
+		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
+		RewriteRuleITokenStream stream_73=new RewriteRuleITokenStream(adaptor,"token 73");
 		RewriteRuleSubtreeStream stream_propertyname=new RewriteRuleSubtreeStream(adaptor,"rule propertyname");
 		RewriteRuleSubtreeStream stream_filterexpression=new RewriteRuleSubtreeStream(adaptor,"rule filterexpression");
 		try { DebugEnterRule(GrammarFileName, "accessor");
@@ -2475,7 +2477,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			try { DebugEnterDecision(20, false);
 			int LA20_1 = input.LA(1);
 
-			if ((LA20_1==74))
+			if ((LA20_1==75))
 			{
 				alt20 = 1;
 			}
@@ -2487,8 +2489,8 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:86:4: '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')'
 				{
 				DebugLocation(86, 4);
-				char_literal64=(IToken)Match(input,74,Follow._74_in_accessor527);  
-				stream_74.Add(char_literal64);
+				char_literal64=(IToken)Match(input,75,Follow._75_in_accessor527);  
+				stream_75.Add(char_literal64);
 
 				DebugLocation(86, 8);
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:86:8: (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE )
@@ -2625,8 +2627,8 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				} finally { DebugExitSubRule(18); }
 
 				DebugLocation(87, 4);
-				char_literal65=(IToken)Match(input,71,Follow._71_in_accessor575);  
-				stream_71.Add(char_literal65);
+				char_literal65=(IToken)Match(input,72,Follow._72_in_accessor575);  
+				stream_72.Add(char_literal65);
 
 				DebugLocation(87, 8);
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:87:8: ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) )
@@ -2639,7 +2641,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 					alt19 = 1;
 				}
-				else if ((LA19_1==72))
+				else if ((LA19_1==73))
 				{
 					alt19 = 2;
 				}
@@ -2666,8 +2668,8 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					stream_IDENTIFIER.Add(id);
 
 					DebugLocation(88, 20);
-					char_literal66=(IToken)Match(input,75,Follow._75_in_accessor588);  
-					stream_75.Add(char_literal66);
+					char_literal66=(IToken)Match(input,76,Follow._76_in_accessor588);  
+					stream_76.Add(char_literal66);
 
 					DebugLocation(88, 24);
 					SPACE67=(IToken)Match(input,SPACE,Follow._SPACE_in_accessor590);  
@@ -2768,8 +2770,8 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				} finally { DebugExitSubRule(19); }
 
 				DebugLocation(90, 4);
-				char_literal69=(IToken)Match(input,72,Follow._72_in_accessor632);  
-				stream_72.Add(char_literal69);
+				char_literal69=(IToken)Match(input,73,Follow._73_in_accessor632);  
+				stream_73.Add(char_literal69);
 
 
 				}
@@ -2810,7 +2812,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_function();
 	partial void LeaveRule_function();
 	// $ANTLR start "function"
-	// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:93:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER | YEAR | YEARS | MONTH | DAY | DAYS | HOUR | HOURS | MINUTE | MINUTES | SECOND | SECONDS );
+	// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:93:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF | CONTAINS | TOLOWER | TOUPPER | YEAR | YEARS | MONTH | DAY | DAYS | HOUR | HOURS | MINUTE | MINUTES | SECOND | SECONDS );
 	[GrammarRule("function")]
 	private AstParserRuleReturnScope<object, IToken> function()
 	{
@@ -2826,10 +2828,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object set70_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "function");
-		DebugLocation(93, 147);
+		DebugLocation(93, 158);
 		try
 		{
-			// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:94:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER | YEAR | YEARS | MONTH | DAY | DAYS | HOUR | HOURS | MINUTE | MINUTES | SECOND | SECONDS )
+			// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:94:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF | CONTAINS | TOLOWER | TOUPPER | YEAR | YEARS | MONTH | DAY | DAYS | HOUR | HOURS | MINUTE | MINUTES | SECOND | SECONDS )
 			DebugEnterAlt(1);
 			// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
@@ -2838,7 +2840,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			DebugLocation(94, 2);
 
 			set70=(IToken)input.LT(1);
-			if ((input.LA(1)>=DAY && input.LA(1)<=DAYS)||input.LA(1)==ENDSWITH||(input.LA(1)>=HOUR && input.LA(1)<=HOURS)||(input.LA(1)>=MINUTE && input.LA(1)<=MONTH)||(input.LA(1)>=SECOND && input.LA(1)<=SECONDS)||input.LA(1)==STARTSWITH||input.LA(1)==SUBSTRINGOF||input.LA(1)==TOLOWER||input.LA(1)==TOUPPER||(input.LA(1)>=YEAR && input.LA(1)<=YEARS))
+			if (input.LA(1)==CONTAINS||(input.LA(1)>=DAY && input.LA(1)<=DAYS)||input.LA(1)==ENDSWITH||(input.LA(1)>=HOUR && input.LA(1)<=HOURS)||(input.LA(1)>=MINUTE && input.LA(1)<=MONTH)||(input.LA(1)>=SECOND && input.LA(1)<=SECONDS)||input.LA(1)==STARTSWITH||input.LA(1)==SUBSTRINGOF||input.LA(1)==TOLOWER||input.LA(1)==TOUPPER||(input.LA(1)>=YEAR && input.LA(1)<=YEARS))
 			{
 				input.Consume();
 				adaptor.AddChild(root_0, (object)adaptor.Create(set70));
@@ -2873,7 +2875,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			LeaveRule("function", 17);
 			LeaveRule_function();
 		}
-		DebugLocation(94, 147);
+		DebugLocation(94, 158);
 		} finally { DebugExitRule(GrammarFileName, "function"); }
 		return retval;
 
@@ -2910,11 +2912,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(97, 11);
-			ORDERBY71=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby719); 
+			ORDERBY71=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby723); 
 			ORDERBY71_tree = (object)adaptor.Create(ORDERBY71);
 			root_0 = (object)adaptor.BecomeRoot(ORDERBY71_tree, root_0);
 			DebugLocation(97, 13);
-			PushFollow(Follow._orderbylist_in_orderby722);
+			PushFollow(Follow._orderbylist_in_orderby726);
 			orderbylist72=orderbylist();
 			PopFollow();
 
@@ -2979,7 +2981,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(100, 4);
-			PushFollow(Follow._orderpropertyname_in_orderbylist732);
+			PushFollow(Follow._orderpropertyname_in_orderbylist736);
 			orderpropertyname73=orderpropertyname();
 			PopFollow();
 
@@ -2993,7 +2995,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(21, false);
 				int LA21_1 = input.LA(1);
 
-				if ((LA21_1==73))
+				if ((LA21_1==74))
 				{
 					alt21 = 1;
 				}
@@ -3007,9 +3009,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:100:23: ',' ! orderpropertyname
 					{
 					DebugLocation(100, 26);
-					char_literal74=(IToken)Match(input,73,Follow._73_in_orderbylist735); 
+					char_literal74=(IToken)Match(input,74,Follow._74_in_orderbylist739); 
 					DebugLocation(100, 28);
-					PushFollow(Follow._orderpropertyname_in_orderbylist738);
+					PushFollow(Follow._orderpropertyname_in_orderbylist742);
 					orderpropertyname75=orderpropertyname();
 					PopFollow();
 
@@ -3091,7 +3093,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:103:4: propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
 			{
 			DebugLocation(103, 4);
-			PushFollow(Follow._propertyname_in_orderpropertyname749);
+			PushFollow(Follow._propertyname_in_orderpropertyname753);
 			propertyname76=propertyname(false);
 			PopFollow();
 
@@ -3103,7 +3105,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			try { DebugEnterDecision(23, false);
 			int LA23_1 = input.LA(1);
 
-			if ((LA23_1==EOF||(LA23_1>=EXPAND && LA23_1<=FILTER)||(LA23_1>=IGNORED && LA23_1<=INLINECOUNT)||LA23_1==ORDERBY||LA23_1==SELECT||LA23_1==SKIP||LA23_1==TOP||LA23_1==70||LA23_1==73))
+			if ((LA23_1==EOF||(LA23_1>=EXPAND && LA23_1<=FILTER)||(LA23_1>=IGNORED && LA23_1<=INLINECOUNT)||LA23_1==ORDERBY||LA23_1==SELECT||LA23_1==SKIP||LA23_1==TOP||LA23_1==71||LA23_1==74))
 			{
 				alt23 = 1;
 			}
@@ -3169,7 +3171,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:105:7: SPACE (op= ASC |op= DESC )
 				{
 				DebugLocation(105, 7);
-				SPACE77=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname772);  
+				SPACE77=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname776);  
 				stream_SPACE.Add(SPACE77);
 
 				DebugLocation(105, 13);
@@ -3201,7 +3203,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:105:14: op= ASC
 					{
 					DebugLocation(105, 16);
-					op=(IToken)Match(input,ASC,Follow._ASC_in_orderpropertyname777);  
+					op=(IToken)Match(input,ASC,Follow._ASC_in_orderpropertyname781);  
 					stream_ASC.Add(op);
 
 
@@ -3212,7 +3214,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:105:23: op= DESC
 					{
 					DebugLocation(105, 25);
-					op=(IToken)Match(input,DESC,Follow._DESC_in_orderpropertyname783);  
+					op=(IToken)Match(input,DESC,Follow._DESC_in_orderpropertyname787);  
 					stream_DESC.Add(op);
 
 
@@ -3421,7 +3423,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:12: INT ^
 				{
 				DebugLocation(108, 15);
-				INT78=(IToken)Match(input,INT,Follow._INT_in_constant807); 
+				INT78=(IToken)Match(input,INT,Follow._INT_in_constant811); 
 				INT78_tree = (object)adaptor.Create(INT78);
 				root_0 = (object)adaptor.BecomeRoot(INT78_tree, root_0);
 
@@ -3432,7 +3434,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:19: BOOL ^
 				{
 				DebugLocation(108, 23);
-				BOOL79=(IToken)Match(input,BOOL,Follow._BOOL_in_constant812); 
+				BOOL79=(IToken)Match(input,BOOL,Follow._BOOL_in_constant816); 
 				BOOL79_tree = (object)adaptor.Create(BOOL79);
 				root_0 = (object)adaptor.BecomeRoot(BOOL79_tree, root_0);
 
@@ -3443,7 +3445,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:27: STRING ^
 				{
 				DebugLocation(108, 33);
-				STRING80=(IToken)Match(input,STRING,Follow._STRING_in_constant817); 
+				STRING80=(IToken)Match(input,STRING,Follow._STRING_in_constant821); 
 				STRING80_tree = (object)adaptor.Create(STRING80);
 				root_0 = (object)adaptor.BecomeRoot(STRING80_tree, root_0);
 
@@ -3454,7 +3456,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:37: DATETIME ^
 				{
 				DebugLocation(108, 45);
-				DATETIME81=(IToken)Match(input,DATETIME,Follow._DATETIME_in_constant822); 
+				DATETIME81=(IToken)Match(input,DATETIME,Follow._DATETIME_in_constant826); 
 				DATETIME81_tree = (object)adaptor.Create(DATETIME81);
 				root_0 = (object)adaptor.BecomeRoot(DATETIME81_tree, root_0);
 
@@ -3465,7 +3467,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:49: LONG ^
 				{
 				DebugLocation(108, 53);
-				LONG82=(IToken)Match(input,LONG,Follow._LONG_in_constant827); 
+				LONG82=(IToken)Match(input,LONG,Follow._LONG_in_constant831); 
 				LONG82_tree = (object)adaptor.Create(LONG82);
 				root_0 = (object)adaptor.BecomeRoot(LONG82_tree, root_0);
 
@@ -3476,7 +3478,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:57: SINGLE ^
 				{
 				DebugLocation(108, 63);
-				SINGLE83=(IToken)Match(input,SINGLE,Follow._SINGLE_in_constant832); 
+				SINGLE83=(IToken)Match(input,SINGLE,Follow._SINGLE_in_constant836); 
 				SINGLE83_tree = (object)adaptor.Create(SINGLE83);
 				root_0 = (object)adaptor.BecomeRoot(SINGLE83_tree, root_0);
 
@@ -3487,7 +3489,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:67: DECIMAL ^
 				{
 				DebugLocation(108, 74);
-				DECIMAL84=(IToken)Match(input,DECIMAL,Follow._DECIMAL_in_constant837); 
+				DECIMAL84=(IToken)Match(input,DECIMAL,Follow._DECIMAL_in_constant841); 
 				DECIMAL84_tree = (object)adaptor.Create(DECIMAL84);
 				root_0 = (object)adaptor.BecomeRoot(DECIMAL84_tree, root_0);
 
@@ -3498,7 +3500,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:78: DOUBLE ^
 				{
 				DebugLocation(108, 84);
-				DOUBLE85=(IToken)Match(input,DOUBLE,Follow._DOUBLE_in_constant842); 
+				DOUBLE85=(IToken)Match(input,DOUBLE,Follow._DOUBLE_in_constant846); 
 				DOUBLE85_tree = (object)adaptor.Create(DOUBLE85);
 				root_0 = (object)adaptor.BecomeRoot(DOUBLE85_tree, root_0);
 
@@ -3509,7 +3511,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:88: GUID ^
 				{
 				DebugLocation(108, 92);
-				GUID86=(IToken)Match(input,GUID,Follow._GUID_in_constant847); 
+				GUID86=(IToken)Match(input,GUID,Follow._GUID_in_constant851); 
 				GUID86_tree = (object)adaptor.Create(GUID86);
 				root_0 = (object)adaptor.BecomeRoot(GUID86_tree, root_0);
 
@@ -3520,7 +3522,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:96: BYTE ^
 				{
 				DebugLocation(108, 100);
-				BYTE87=(IToken)Match(input,BYTE,Follow._BYTE_in_constant852); 
+				BYTE87=(IToken)Match(input,BYTE,Follow._BYTE_in_constant856); 
 				BYTE87_tree = (object)adaptor.Create(BYTE87);
 				root_0 = (object)adaptor.BecomeRoot(BYTE87_tree, root_0);
 
@@ -3531,7 +3533,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:108:104: NULL ^
 				{
 				DebugLocation(108, 108);
-				NULL88=(IToken)Match(input,NULL,Follow._NULL_in_constant857); 
+				NULL88=(IToken)Match(input,NULL,Follow._NULL_in_constant861); 
 				NULL88_tree = (object)adaptor.Create(NULL88);
 				root_0 = (object)adaptor.BecomeRoot(NULL88_tree, root_0);
 
@@ -3590,7 +3592,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<object, IToken> identifierpart89 = default(AstParserRuleReturnScope<object, IToken>);
 
 		object char_literal90_tree = default(object);
-		RewriteRuleITokenStream stream_74=new RewriteRuleITokenStream(adaptor,"token 74");
+		RewriteRuleITokenStream stream_75=new RewriteRuleITokenStream(adaptor,"token 75");
 		RewriteRuleSubtreeStream stream_identifierpart=new RewriteRuleSubtreeStream(adaptor,"rule identifierpart");
 		RewriteRuleSubtreeStream stream_subpropertyname=new RewriteRuleSubtreeStream(adaptor,"rule subpropertyname");
 		try { DebugEnterRule(GrammarFileName, "propertyname");
@@ -3607,7 +3609,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:111:5: identifierpart[subquery]
 			{
 			DebugLocation(111, 5);
-			PushFollow(Follow._identifierpart_in_propertyname870);
+			PushFollow(Follow._identifierpart_in_propertyname874);
 			identifierpart89=identifierpart(subquery);
 			PopFollow();
 
@@ -3645,7 +3647,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			try { DebugEnterDecision(25, false);
 			int LA25_1 = input.LA(1);
 
-			if ((LA25_1==74))
+			if ((LA25_1==75))
 			{
 				int LA25_2 = input.LA(2);
 
@@ -3662,11 +3664,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:111:50: '/' next= subpropertyname[false]
 				{
 				DebugLocation(111, 50);
-				char_literal90=(IToken)Match(input,74,Follow._74_in_propertyname879);  
-				stream_74.Add(char_literal90);
+				char_literal90=(IToken)Match(input,75,Follow._75_in_propertyname883);  
+				stream_75.Add(char_literal90);
 
 				DebugLocation(111, 58);
-				PushFollow(Follow._subpropertyname_in_propertyname883);
+				PushFollow(Follow._subpropertyname_in_propertyname887);
 				next=subpropertyname(false);
 				PopFollow();
 
@@ -3769,7 +3771,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(114, 4);
-			PushFollow(Follow._propertyname_in_subpropertyname906);
+			PushFollow(Follow._propertyname_in_subpropertyname910);
 			propertyname91=propertyname(false);
 			PopFollow();
 
@@ -3862,7 +3864,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:117:5: id= IDENTIFIER
 				{
 				DebugLocation(117, 7);
-				id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_identifierpart921);  
+				id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_identifierpart925);  
 				stream_IDENTIFIER.Add(id);
 
 
@@ -3903,7 +3905,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Users\\JP\\Downloads\\LinqToQuerystring3\\LinqToQuerystring\\LinqToQuerystring.g:119:5: DYNAMICIDENTIFIER
 				{
 				DebugLocation(119, 5);
-				DYNAMICIDENTIFIER92=(IToken)Match(input,DYNAMICIDENTIFIER,Follow._DYNAMICIDENTIFIER_in_identifierpart943);  
+				DYNAMICIDENTIFIER92=(IToken)Match(input,DYNAMICIDENTIFIER,Follow._DYNAMICIDENTIFIER_in_identifierpart947);  
 				stream_DYNAMICIDENTIFIER.Add(DYNAMICIDENTIFIER92);
 
 
@@ -4043,9 +4045,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	#region Follow sets
 	private static class Follow
 	{
-		public static readonly BitSet _param_in_prog76 = new BitSet(new ulong[]{0x520001806000002UL,0x42UL});
-		public static readonly BitSet _70_in_prog79 = new BitSet(new ulong[]{0x520001806000000UL,0x2UL});
-		public static readonly BitSet _param_in_prog82 = new BitSet(new ulong[]{0x520001806000002UL,0x42UL});
+		public static readonly BitSet _param_in_prog76 = new BitSet(new ulong[]{0xA4000300C000002UL,0x84UL});
+		public static readonly BitSet _71_in_prog79 = new BitSet(new ulong[]{0xA4000300C000000UL,0x4UL});
+		public static readonly BitSet _param_in_prog82 = new BitSet(new ulong[]{0xA4000300C000002UL,0x84UL});
 		public static readonly BitSet _orderby_in_param95 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _top_in_param99 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _skip_in_param103 = new BitSet(new ulong[]{0x2UL});
@@ -4054,106 +4056,106 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		public static readonly BitSet _inlinecount_in_param115 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _expand_in_param119 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _ignored_in_param123 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SKIP_in_skip134 = new BitSet(new ulong[]{0x2000000000UL});
-		public static readonly BitSet _INT_in_skip137 = new BitSet(new ulong[]{0x2000000002UL});
-		public static readonly BitSet _TOP_in_top148 = new BitSet(new ulong[]{0x2000000000UL});
-		public static readonly BitSet _INT_in_top151 = new BitSet(new ulong[]{0x2000000002UL});
-		public static readonly BitSet _FILTER_in_filter162 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
+		public static readonly BitSet _SKIP_in_skip134 = new BitSet(new ulong[]{0x4000000000UL});
+		public static readonly BitSet _INT_in_skip137 = new BitSet(new ulong[]{0x4000000002UL});
+		public static readonly BitSet _TOP_in_top148 = new BitSet(new ulong[]{0x4000000000UL});
+		public static readonly BitSet _INT_in_top151 = new BitSet(new ulong[]{0x4000000002UL});
+		public static readonly BitSet _FILTER_in_filter162 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
 		public static readonly BitSet _filterexpression_in_filter165 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SELECT_in_select176 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _propertyname_in_select179 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _73_in_select183 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _propertyname_in_select186 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _EXPAND_in_expand201 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _propertyname_in_expand204 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _73_in_expand208 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _propertyname_in_expand211 = new BitSet(new ulong[]{0x2UL,0x200UL});
+		public static readonly BitSet _SELECT_in_select176 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _propertyname_in_select179 = new BitSet(new ulong[]{0x2UL,0x400UL});
+		public static readonly BitSet _74_in_select183 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _propertyname_in_select186 = new BitSet(new ulong[]{0x2UL,0x400UL});
+		public static readonly BitSet _EXPAND_in_expand201 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _propertyname_in_expand204 = new BitSet(new ulong[]{0x2UL,0x400UL});
+		public static readonly BitSet _74_in_expand208 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _propertyname_in_expand211 = new BitSet(new ulong[]{0x2UL,0x400UL});
 		public static readonly BitSet _INLINECOUNT_in_inlinecount223 = new BitSet(new ulong[]{0x40UL});
 		public static readonly BitSet _ALLPAGES_in_inlinecount226 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INLINECOUNT_in_inlinecount231 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _INLINECOUNT_in_inlinecount231 = new BitSet(new ulong[]{0x1000000000000UL});
 		public static readonly BitSet _NONE_in_inlinecount233 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IGNORED_in_ignored243 = new BitSet(new ulong[]{0x400000000UL});
+		public static readonly BitSet _IGNORED_in_ignored243 = new BitSet(new ulong[]{0x800000000UL});
 		public static readonly BitSet _IDENTIFIER_in_ignored245 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _orexpression_in_filterexpression259 = new BitSet(new ulong[]{0x800000000000002UL});
-		public static readonly BitSet _SPACE_in_filterexpression263 = new BitSet(new ulong[]{0x10000000000000UL});
-		public static readonly BitSet _OR_in_filterexpression266 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _SPACE_in_filterexpression269 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
-		public static readonly BitSet _orexpression_in_filterexpression272 = new BitSet(new ulong[]{0x800000000000002UL});
-		public static readonly BitSet _andexpression_in_orexpression286 = new BitSet(new ulong[]{0x800000000000002UL});
+		public static readonly BitSet _orexpression_in_filterexpression259 = new BitSet(new ulong[]{0x1000000000000002UL});
+		public static readonly BitSet _SPACE_in_filterexpression263 = new BitSet(new ulong[]{0x20000000000000UL});
+		public static readonly BitSet _OR_in_filterexpression266 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _SPACE_in_filterexpression269 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _orexpression_in_filterexpression272 = new BitSet(new ulong[]{0x1000000000000002UL});
+		public static readonly BitSet _andexpression_in_orexpression286 = new BitSet(new ulong[]{0x1000000000000002UL});
 		public static readonly BitSet _SPACE_in_orexpression290 = new BitSet(new ulong[]{0x80UL});
-		public static readonly BitSet _AND_in_orexpression293 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _SPACE_in_orexpression296 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
-		public static readonly BitSet _andexpression_in_orexpression299 = new BitSet(new ulong[]{0x800000000000002UL});
-		public static readonly BitSet _NOT_in_andexpression313 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _SPACE_in_andexpression316 = new BitSet(new ulong[]{0x72C439272077B000UL,0xB5UL});
-		public static readonly BitSet _71_in_andexpression319 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
-		public static readonly BitSet _filterexpression_in_andexpression321 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _72_in_andexpression324 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _AND_in_orexpression293 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _SPACE_in_orexpression296 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _andexpression_in_orexpression299 = new BitSet(new ulong[]{0x1000000000000002UL});
+		public static readonly BitSet _NOT_in_andexpression313 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _SPACE_in_andexpression316 = new BitSet(new ulong[]{0xE588724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _72_in_andexpression319 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _filterexpression_in_andexpression321 = new BitSet(new ulong[]{0x0UL,0x200UL});
+		public static readonly BitSet _73_in_andexpression324 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _booleanexpression_in_andexpression328 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _71_in_andexpression336 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
-		public static readonly BitSet _filterexpression_in_andexpression338 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _72_in_andexpression341 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _72_in_andexpression336 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _filterexpression_in_andexpression338 = new BitSet(new ulong[]{0x0UL,0x200UL});
+		public static readonly BitSet _73_in_andexpression341 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _booleanexpression_in_andexpression345 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _atom_in_booleanexpression361 = new BitSet(new ulong[]{0x800000000000002UL});
-		public static readonly BitSet _SPACE_in_booleanexpression369 = new BitSet(new ulong[]{0x200C018800000UL});
-		public static readonly BitSet _EQUALS_in_booleanexpression374 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _NOTEQUALS_in_booleanexpression380 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _GREATERTHAN_in_booleanexpression386 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression392 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _LESSTHAN_in_booleanexpression398 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression404 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _SPACE_in_booleanexpression407 = new BitSet(new ulong[]{0x72C439272077B000UL,0x35UL});
+		public static readonly BitSet _atom_in_booleanexpression361 = new BitSet(new ulong[]{0x1000000000000002UL});
+		public static readonly BitSet _SPACE_in_booleanexpression369 = new BitSet(new ulong[]{0x4018031000000UL});
+		public static readonly BitSet _EQUALS_in_booleanexpression374 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _NOTEQUALS_in_booleanexpression380 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _GREATERTHAN_in_booleanexpression386 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression392 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _LESSTHAN_in_booleanexpression398 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression404 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _SPACE_in_booleanexpression407 = new BitSet(new ulong[]{0xE588724E40EF7000UL,0x6AUL});
 		public static readonly BitSet _atom_in_booleanexpression411 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _functioncall_in_atom463 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _constant_in_atom469 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _accessor_in_atom474 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _function_in_functioncall486 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _71_in_functioncall489 = new BitSet(new ulong[]{0x72C439272077B000UL,0x35UL});
-		public static readonly BitSet _atom_in_functioncall491 = new BitSet(new ulong[]{0x0UL,0x300UL});
-		public static readonly BitSet _73_in_functioncall495 = new BitSet(new ulong[]{0x72C439272077B000UL,0x35UL});
-		public static readonly BitSet _atom_in_functioncall497 = new BitSet(new ulong[]{0x0UL,0x300UL});
-		public static readonly BitSet _72_in_functioncall502 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_accessor514 = new BitSet(new ulong[]{0x2UL,0x400UL});
-		public static readonly BitSet _74_in_accessor527 = new BitSet(new ulong[]{0x8000060000004920UL});
-		public static readonly BitSet _ANY_in_accessor532 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _ALL_in_accessor538 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _COUNT_in_accessor544 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _MAX_in_accessor550 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _MIN_in_accessor556 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _SUM_in_accessor562 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _AVERAGE_in_accessor568 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _71_in_accessor575 = new BitSet(new ulong[]{0x400000000UL,0x100UL});
-		public static readonly BitSet _IDENTIFIER_in_accessor586 = new BitSet(new ulong[]{0x0UL,0x800UL});
-		public static readonly BitSet _75_in_accessor588 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _SPACE_in_accessor590 = new BitSet(new ulong[]{0x72C539272077B000UL,0xB5UL});
-		public static readonly BitSet _filterexpression_in_accessor592 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _72_in_accessor632 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ORDERBY_in_orderby719 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _orderbylist_in_orderby722 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist732 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _73_in_orderbylist735 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist738 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _propertyname_in_orderpropertyname749 = new BitSet(new ulong[]{0x800000000000002UL});
-		public static readonly BitSet _SPACE_in_orderpropertyname772 = new BitSet(new ulong[]{0x80200UL});
-		public static readonly BitSet _ASC_in_orderpropertyname777 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DESC_in_orderpropertyname783 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INT_in_constant807 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _BOOL_in_constant812 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _STRING_in_constant817 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DATETIME_in_constant822 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LONG_in_constant827 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SINGLE_in_constant832 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DECIMAL_in_constant837 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOUBLE_in_constant842 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _GUID_in_constant847 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _BYTE_in_constant852 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _NULL_in_constant857 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _identifierpart_in_propertyname870 = new BitSet(new ulong[]{0x2UL,0x400UL});
-		public static readonly BitSet _74_in_propertyname879 = new BitSet(new ulong[]{0x400200000UL});
-		public static readonly BitSet _subpropertyname_in_propertyname883 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_subpropertyname906 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IDENTIFIER_in_identifierpart921 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DYNAMICIDENTIFIER_in_identifierpart943 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _function_in_functioncall486 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _72_in_functioncall489 = new BitSet(new ulong[]{0xE588724E40EF7000UL,0x6AUL});
+		public static readonly BitSet _atom_in_functioncall491 = new BitSet(new ulong[]{0x0UL,0x600UL});
+		public static readonly BitSet _74_in_functioncall495 = new BitSet(new ulong[]{0xE588724E40EF7000UL,0x6AUL});
+		public static readonly BitSet _atom_in_functioncall497 = new BitSet(new ulong[]{0x0UL,0x600UL});
+		public static readonly BitSet _73_in_functioncall502 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_accessor514 = new BitSet(new ulong[]{0x2UL,0x800UL});
+		public static readonly BitSet _75_in_accessor527 = new BitSet(new ulong[]{0xC0000008920UL,0x1UL});
+		public static readonly BitSet _ANY_in_accessor532 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _ALL_in_accessor538 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _COUNT_in_accessor544 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _MAX_in_accessor550 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _MIN_in_accessor556 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _SUM_in_accessor562 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _AVERAGE_in_accessor568 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _72_in_accessor575 = new BitSet(new ulong[]{0x800000000UL,0x200UL});
+		public static readonly BitSet _IDENTIFIER_in_accessor586 = new BitSet(new ulong[]{0x0UL,0x1000UL});
+		public static readonly BitSet _76_in_accessor588 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _SPACE_in_accessor590 = new BitSet(new ulong[]{0xE58A724E40EF7000UL,0x16AUL});
+		public static readonly BitSet _filterexpression_in_accessor592 = new BitSet(new ulong[]{0x0UL,0x200UL});
+		public static readonly BitSet _73_in_accessor632 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ORDERBY_in_orderby723 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _orderbylist_in_orderby726 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist736 = new BitSet(new ulong[]{0x2UL,0x400UL});
+		public static readonly BitSet _74_in_orderbylist739 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist742 = new BitSet(new ulong[]{0x2UL,0x400UL});
+		public static readonly BitSet _propertyname_in_orderpropertyname753 = new BitSet(new ulong[]{0x1000000000000002UL});
+		public static readonly BitSet _SPACE_in_orderpropertyname776 = new BitSet(new ulong[]{0x100200UL});
+		public static readonly BitSet _ASC_in_orderpropertyname781 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DESC_in_orderpropertyname787 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _INT_in_constant811 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _BOOL_in_constant816 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _STRING_in_constant821 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DATETIME_in_constant826 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _LONG_in_constant831 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SINGLE_in_constant836 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DECIMAL_in_constant841 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DOUBLE_in_constant846 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _GUID_in_constant851 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _BYTE_in_constant856 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _NULL_in_constant861 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _identifierpart_in_propertyname874 = new BitSet(new ulong[]{0x2UL,0x800UL});
+		public static readonly BitSet _75_in_propertyname883 = new BitSet(new ulong[]{0x800400000UL});
+		public static readonly BitSet _subpropertyname_in_propertyname887 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_subpropertyname910 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _IDENTIFIER_in_identifierpart925 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DYNAMICIDENTIFIER_in_identifierpart947 = new BitSet(new ulong[]{0x2UL});
 	}
 	#endregion Follow sets
 }

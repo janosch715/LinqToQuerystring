@@ -19,7 +19,7 @@
         public int Value
             => Convert.ToInt32(this.Text, CultureInfo.InvariantCulture);
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             return Expression.Constant(this.Value);
         }

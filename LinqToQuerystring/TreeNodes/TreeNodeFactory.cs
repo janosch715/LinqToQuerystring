@@ -61,6 +61,7 @@
                     return new StartsWithNode(token, this);
                 case LinqToQuerystringLexer.ENDSWITH:
                     return new EndsWithNode(token, this);
+                case LinqToQuerystringLexer.CONTAINS:
                 case LinqToQuerystringLexer.SUBSTRINGOF:
                     return new SubstringOfNode(token, this);
                 case LinqToQuerystringLexer.TOLOWER:

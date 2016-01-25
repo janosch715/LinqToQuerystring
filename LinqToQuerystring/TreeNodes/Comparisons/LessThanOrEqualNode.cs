@@ -15,10 +15,10 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var leftExpression = this.LeftNode.BuildLinqExpression(query, inputType, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression(query, inputType, expression, item);
+            var leftExpression = this.LeftNode.BuildLinqExpression(buildLinqExpressionParameters);
+            var rightExpression = this.RightNode.BuildLinqExpression(buildLinqExpressionParameters);
 
             NormalizeTypes(ref leftExpression, ref rightExpression);
 

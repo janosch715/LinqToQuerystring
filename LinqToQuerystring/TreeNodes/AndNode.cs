@@ -15,11 +15,11 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             return Expression.AndAlso(
-                this.LeftNode.BuildLinqExpression(query, inputType, expression, item),
-                this.RightNode.BuildLinqExpression(query, inputType, expression, item));
+                this.LeftNode.BuildLinqExpression(buildLinqExpressionParameters),
+                this.RightNode.BuildLinqExpression(buildLinqExpressionParameters));
         }
 
         public override object RetrieveStaticValue()

@@ -15,13 +15,21 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var parameter = item ?? Expression.Parameter(inputType, "o");
-            var lambda = Expression.Lambda(
-                this.ChildNode.BuildLinqExpression(query, inputType, expression, parameter), new[] { parameter as ParameterExpression });
+            var parameter = buildLinqExpressionParameters.Item ?? Expression.Parameter(buildLinqExpressionParameters.InputType, "o");
 
-            return Expression.Call(typeof(Queryable), "Where", new[] { query.ElementType }, query.Expression, lambda);
+            var newBuildLinqExpressionParameters =
+                new BuildLinqExpressionParameters(
+                    buildLinqExpressionParameters.Query,
+                    buildLinqExpressionParameters.InputType,
+                    buildLinqExpressionParameters.Expression,
+                    parameter);
+
+            var lambda = 
+                Expression.Lambda(this.ChildNode.BuildLinqExpression(newBuildLinqExpressionParameters), parameter as ParameterExpression);
+
+            return Expression.Call(typeof(Queryable), "Where", new[] { buildLinqExpressionParameters.Query.ElementType }, buildLinqExpressionParameters.Query.Expression, lambda);
         }
 
         public override int CompareTo(TreeNode other)

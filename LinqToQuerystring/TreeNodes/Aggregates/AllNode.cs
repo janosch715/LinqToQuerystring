@@ -17,9 +17,9 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(query, inputType, expression, item);
+            var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(buildLinqExpressionParameters);
             var alias = this.ChildNodes.ElementAt(1).Text;
             var filter = this.ChildNodes.ElementAt(2);
 
@@ -38,8 +38,14 @@
 
             var parameter = Expression.Parameter(underlyingType, alias);
 
-            var lambda = Expression.Lambda(
-                filter.BuildLinqExpression(query, inputType, expression, parameter), new[] { parameter });
+            var newBuildLinqExpressionParameters =
+                new BuildLinqExpressionParameters(
+                    buildLinqExpressionParameters.Query,
+                    buildLinqExpressionParameters.InputType,
+                    buildLinqExpressionParameters.Expression,
+                    parameter);
+
+            var lambda = Expression.Lambda(filter.BuildLinqExpression(newBuildLinqExpressionParameters), parameter);
 
             return Expression.Call(typeof(Enumerable), "All", new[] { underlyingType }, property, lambda);
         }

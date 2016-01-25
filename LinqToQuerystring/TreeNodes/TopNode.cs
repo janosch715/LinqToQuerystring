@@ -15,14 +15,14 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             return Expression.Call(
                 typeof(Queryable),
                 "Take",
-                new[] { query.ElementType },
-                query.Expression,
-                this.ChildNode.BuildLinqExpression(query, inputType, expression, item));
+                new[] { buildLinqExpressionParameters.Query.ElementType },
+                buildLinqExpressionParameters.Query.Expression,
+                this.ChildNode.BuildLinqExpression(buildLinqExpressionParameters));
         }
 
         public override object RetrieveStaticValue()

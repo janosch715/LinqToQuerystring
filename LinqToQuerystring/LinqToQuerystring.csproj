@@ -63,6 +63,7 @@
     <Compile Include="TreeNodes\Base\SingleChildNode.cs" />
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
+    <Compile Include="TreeNodes\BuildLinqExpressionParameters.cs" />
     <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
     <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
     <Compile Include="TreeNodes\DataTypes\DecimalNode.cs" />

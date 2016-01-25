@@ -16,28 +16,28 @@
         {
         }
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var parameter = item ?? Expression.Parameter(inputType, "o");
-            Expression childExpression = expression;
+            var parameter = buildLinqExpressionParameters.Item ?? Expression.Parameter(buildLinqExpressionParameters.InputType, "o");
+            var childExpression = buildLinqExpressionParameters.Expression;
 
             var temp = parameter;
             foreach (var child in this.ChildNodes)
             {
-                childExpression = child.BuildLinqExpression(query, inputType, childExpression, temp);
+                childExpression = child.BuildLinqExpression(new BuildLinqExpressionParameters(buildLinqExpressionParameters.Query, buildLinqExpressionParameters.InputType, childExpression, temp));
                 temp = childExpression;
             }
 
             Debug.Assert(childExpression != null, "childExpression should never be null");
 
             var methodName = "OrderBy";
-            if ((query.Provider.GetType().Name.Contains("DbQueryProvider") || query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
+            if ((buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("DbQueryProvider") || buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
             {
                 methodName = "ThenBy";
             }
 
-            var lambda = Expression.Lambda(childExpression, new[] { parameter as ParameterExpression });
-            return Expression.Call(typeof(Queryable), methodName, new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
+            var lambda = Expression.Lambda(childExpression, parameter as ParameterExpression);
+            return Expression.Call(typeof(Queryable), methodName, new[] { buildLinqExpressionParameters.Query.ElementType, childExpression.Type }, buildLinqExpressionParameters.Query.Expression, lambda);
         }
 
         public override object RetrieveStaticValue()

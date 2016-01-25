@@ -18,7 +18,7 @@
         public Guid Value
             => new Guid(this.Text.Replace("guid'", string.Empty).Replace("'", string.Empty));
 
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             return Expression.Constant(this.Value);
         }

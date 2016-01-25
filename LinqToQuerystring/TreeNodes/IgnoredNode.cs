@@ -14,9 +14,9 @@
             : base(payload, treeNodeFactory)
         {
         }
-        public override Expression BuildLinqExpression(IQueryable query, Type inputType, Expression expression, Expression item)
+        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            return expression;
+            return buildLinqExpressionParameters.Expression;
         }
     }
 }
