@@ -8,7 +8,7 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class IdentifierNode : TreeNode
+    public class IdentifierNode : SingleChildNode
     {
         public IdentifierNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
