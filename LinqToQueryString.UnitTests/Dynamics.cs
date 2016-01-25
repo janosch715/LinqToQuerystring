@@ -146,7 +146,7 @@
     public class When_filtering_using_tolower_function_on_a_dynamic_type : Dynamics
     {
         private Because of =
-            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=tolower([Name] eq 'pete')");
+            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=tolower([Name]) eq 'pete'");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(1);
 

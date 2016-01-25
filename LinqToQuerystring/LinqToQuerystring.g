@@ -79,7 +79,7 @@ atom[bool subquery]
 	|	accessor[subquery];
 	
 functioncall[bool subquery]
-	:	function^ '(' atom[subquery] (',' atom[subquery])* ')';
+	:	function^ '(' SPACE!? atom[subquery] SPACE!? (',' SPACE!? atom[subquery] SPACE!? )* ')';
 	
 accessor[bool subquery]:
 		(propertyname[subquery] -> propertyname) (

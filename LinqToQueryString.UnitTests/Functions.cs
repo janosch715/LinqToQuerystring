@@ -23,24 +23,24 @@
         private Establish context = () =>
         {
             concreteCollection = new List<ConcreteClass>
-                                         {
-                                             InstanceBuilders.BuildConcrete("Saturday", 1, new DateTime(2001, 01, 01, 01, 05, 00), true),
-                                             InstanceBuilders.BuildConcrete("Satnav", 2, new DateTime(2002, 01, 02, 06, 10, 10), false),
-                                             InstanceBuilders.BuildConcrete("Saturnalia", 3, new DateTime(2003, 02, 02, 10, 10, 20), true),
-                                             InstanceBuilders.BuildConcrete("Saturn", 4, new DateTime(2004, 04, 06, 10, 20, 30), true),
-                                             InstanceBuilders.BuildConcrete("Monday", 5, new DateTime(2005, 06, 21, 13, 20, 40), true),
-                                             InstanceBuilders.BuildConcrete("Tuesday", 5, new DateTime(2005, 06, 30, 20, 20, 50), true),
-                                             InstanceBuilders.BuildConcrete("Burns", 5, new DateTime(2005, 10, 31, 23, 35, 50), true)
-                                         };
+            {
+                InstanceBuilders.BuildConcrete("Saturday", 1, new DateTime(2001, 01, 01, 01, 05, 00), true),
+                InstanceBuilders.BuildConcrete("Satnav", 2, new DateTime(2002, 01, 02, 06, 10, 10), false),
+                InstanceBuilders.BuildConcrete("Saturnalia", 3, new DateTime(2003, 02, 02, 10, 10, 20), true),
+                InstanceBuilders.BuildConcrete("Saturn", 4, new DateTime(2004, 04, 06, 10, 20, 30), true),
+                InstanceBuilders.BuildConcrete("Monday", 5, new DateTime(2005, 06, 21, 13, 20, 40), true),
+                InstanceBuilders.BuildConcrete("Tuesday", 5, new DateTime(2005, 06, 30, 20, 20, 50), true),
+                InstanceBuilders.BuildConcrete("Burns", 5, new DateTime(2005, 10, 31, 23, 35, 50), true)
+            };
 
             complexCollection = new List<ComplexClass>
-                                         {
-                                             new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
-                                             new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
-                                             new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
-                                             new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
-                                             new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
-                                         };
+            {
+                new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
+                new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
+                new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
+                new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
+                new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
+            };
         };
     }
 
@@ -70,6 +70,28 @@
     {
         private Because of =
             () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=substringof('urn',Name)");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => o.Name.Contains("urn"));
+    }
+
+    public class When_filtering_on_substringof_function_with_whitespace_before_argument : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=substringof( 'urn' , Name )");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => o.Name.Contains("urn"));
+    }
+
+    public class When_filtering_on_contains_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=contains('urn',Name)");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 

@@ -31,31 +31,31 @@
             guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
 
             concreteCollection = new List<ConcreteClass>
-                                         {
-                                             InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false),
-                                             InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false)
-                                         };
+            {
+                InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false),
+                InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false)
+            };
 
             complexCollection = new List<ComplexClass>
-                                         {
-                                             new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
-                                             new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
-                                             new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
-                                             new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
-                                             new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
-                                         };
+            {
+                new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
+                new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
+                new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
+                new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
+                new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
+            };
 
 
             nullableCollection = new List<NullableClass>
-                                     {
-                                         InstanceBuilders.BuildNull(3, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]),
-                                         InstanceBuilders.BuildNull(1, new DateTime(2001, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]),
-                                         InstanceBuilders.BuildNull(),
-                                         InstanceBuilders.BuildNull(2, new DateTime(2002, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]),
-                                     };
+            {
+                InstanceBuilders.BuildNull(3, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]),
+                InstanceBuilders.BuildNull(1, new DateTime(2001, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]),
+                InstanceBuilders.BuildNull(),
+                InstanceBuilders.BuildNull(2, new DateTime(2002, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]),
+            };
         };
     }
 
