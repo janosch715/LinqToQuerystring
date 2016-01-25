@@ -31,52 +31,52 @@
         protected static Guid[] guidArray;
 
         private Establish context = () =>
+        {
+            guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
+            concreteCollection = new List<ConcreteClass>
             {
-                guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
-
-                concreteCollection = new List<ConcreteClass>
-                                         {
-                                             InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0]),
-                                             InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, 0.3m, guidArray[2]),
-                                             InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, 0.5m, guidArray[4]),
-                                             InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, 0.3m, guidArray[2]),
-                                             InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true, 40000000000, 444.444, 444.444f, 0x22, 0.4m, guidArray[3]),
-                                             InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0]),
-                                             InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true, 40000000000, 444.444, 444.444f, 0xCC, 0.4m, guidArray[3]),
-                                             InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1]),
-                                             InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, 0.3m, guidArray[2]),
-                                             InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, 0.1m, guidArray[0]),
-                                             InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1])
-                                         };
-
-                edgeCaseCollection = new List<ConcreteClass>
-                                     {
-                                         InstanceBuilders.BuildConcrete("Apple\\Bob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\bBob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\tBob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\nBob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\fBob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\rBob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple\"Bob", 1, new DateTime(2002  , 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("Apple'Bob", 1, new DateTime(2002, 01, 01), true),
-                                         InstanceBuilders.BuildConcrete("x y & z", 1, new DateTime(2002, 01, 01), true),
-                                     };
-
-                complexCollection = new List<ComplexClass>
-                                         {
-                                             new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
-                                             new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
-                                             new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
-                                             new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
-                                             new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
-                                         };
-
-                nullableCollection = new List<NullableClass>
-                                     {
-                                         InstanceBuilders.BuildNull(),
-                                         InstanceBuilders.BuildNull(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0])
-                                     };
+                InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0], "Apple"),
+                InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, 0.3m, guidArray[2]),
+                InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, 0.5m, guidArray[4]),
+                InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, 0.3m, guidArray[2]),
+                InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true, 40000000000, 444.444, 444.444f, 0x22, 0.4m, guidArray[3]),
+                InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0]),
+                InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true, 40000000000, 444.444, 444.444f, 0xCC, 0.4m, guidArray[3]),
+                InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1]),
+                InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, 0.3m, guidArray[2]),
+                InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, 0.1m, guidArray[0]),
+                InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1])
             };
+
+            edgeCaseCollection = new List<ConcreteClass>
+            {
+                InstanceBuilders.BuildConcrete("Apple\\Bob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\bBob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\tBob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\nBob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\fBob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\rBob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple\"Bob", 1, new DateTime(2002  , 01, 01), true),
+                InstanceBuilders.BuildConcrete("Apple'Bob", 1, new DateTime(2002, 01, 01), true),
+                InstanceBuilders.BuildConcrete("x y & z", 1, new DateTime(2002, 01, 01), true),
+            };
+
+            complexCollection = new List<ComplexClass>
+            {
+                new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) },
+                new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) },
+                new ComplexClass { Title = "David", Concrete = InstanceBuilders.BuildConcrete("Banana", 2, new DateTime(2003, 01, 01), false) },
+                new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
+                new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
+            };
+
+            nullableCollection = new List<NullableClass>
+            {
+                InstanceBuilders.BuildNull(),
+                InstanceBuilders.BuildNull(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0])
+            };
+        };
     }
 
     #region Ignored operators
@@ -1659,6 +1659,19 @@
 
         private It should_only_return_records_with_name_equal_to_custard_and_result_of_complete_equals_true_or_date_greater_than_2003_01_01 =
             () => result.ShouldEachConformTo(o => !(o.Name == "Apple" && (o.Complete || o.Date > new DateTime(2003, 01, 01))));
+    }
+
+    #endregion
+
+    #region Filter on deep property path string tests
+
+    public class When_using_eq_filter_on_a_single_string_on_a_deep_property_path : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=EdgeCaseClass/Name eq 'Apple'");
+
+        private It should_return_one_records = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_of_edge_case_class_is_apple = () => result.ShouldEachConformTo(o => o.EdgeCaseClass.Name == "Apple");
     }
 
     #endregion

@@ -10,7 +10,7 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class SelectNode : SingleChildNode
+    public class SelectNode : TreeNode
     {
         public SelectNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
@@ -33,7 +33,7 @@
             var newDictionary = Expression.New(typeof(Dictionary<string, object>));
             var init = Expression.ListInit(newDictionary, elements);
 
-            var lambda = Expression.Lambda(init, new[] { parameter as ParameterExpression });
+            var lambda = Expression.Lambda(init, parameter as ParameterExpression);
             return Expression.Call(typeof(Queryable), "Select", new[] { query.ElementType, typeof(Dictionary<string, object>) }, query.Expression, lambda);
         }
 

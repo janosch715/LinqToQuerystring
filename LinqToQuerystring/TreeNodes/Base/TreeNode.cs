@@ -24,17 +24,17 @@
         /// <summary>
         /// This hacky property overwrites the base property which has a bug when using tree rewrites
         /// </summary>
-        protected IEnumerable<TreeNode> ChildNodes
+        public IReadOnlyList<TreeNode> ChildNodes
         {
             get
             {
                 var result = new List<TreeNode>();
-                if (base.ChildCount <= 0)
+                if (this.ChildCount <= 0)
                 {
                     return result;
                 }
 
-                foreach (var child in base.Children)
+                foreach (var child in this.Children)
                 {
                     var node = child as TreeNode;
                     if (node == null)
@@ -168,6 +168,11 @@
             }
 
             return produces(leftExpression, rightExpression);
+        }
+
+        public override string ToString()
+        {
+            return this.GetType().Name;
         }
     }
 }
