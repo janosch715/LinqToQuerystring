@@ -21,10 +21,5 @@
                 this.LeftNode.BuildLinqExpression(buildLinqExpressionParameters),
                 this.RightNode.BuildLinqExpression(buildLinqExpressionParameters));
         }
-
-        public override object RetrieveStaticValue()
-        {
-            throw new NotSupportedException("The node has no static value.");
-        }
     }
 }

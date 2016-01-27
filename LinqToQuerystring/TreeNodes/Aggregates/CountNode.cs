@@ -36,10 +36,5 @@
 
             return Expression.Call(typeof(Enumerable), "Count", new[] { underlyingType }, property);
         }
-
-        public override object RetrieveStaticValue()
-        {
-            throw new NotSupportedException("The node has no static value.");
-        }
     }
 }

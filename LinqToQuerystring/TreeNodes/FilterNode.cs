@@ -19,13 +19,7 @@
         {
             var parameter = buildLinqExpressionParameters.Item ?? Expression.Parameter(buildLinqExpressionParameters.InputType, "o");
 
-            var newBuildLinqExpressionParameters =
-                new BuildLinqExpressionParameters(
-                    buildLinqExpressionParameters.Query,
-                    buildLinqExpressionParameters.InputType,
-                    buildLinqExpressionParameters.Expression,
-                    parameter);
-
+            var newBuildLinqExpressionParameters = buildLinqExpressionParameters.ChangeItem(parameter);
             var lambda = 
                 Expression.Lambda(this.ChildNode.BuildLinqExpression(newBuildLinqExpressionParameters), parameter as ParameterExpression);
 

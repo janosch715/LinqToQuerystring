@@ -38,6 +38,8 @@
 
         public EdgeCaseClass EdgeCaseClass { get; set; }
 
+        public ConcreteClass Parent { get; set; }
+
         public int CompareTo(ConcreteClass other)
         {
             return String.CompareOrdinal(this.Name, other.Name);

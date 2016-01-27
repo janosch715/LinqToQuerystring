@@ -8,32 +8,17 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class DynamicIdentifierNode : SingleChildNode
+    public class DynamicIdentifierNode : BaseIdentifierNode
     {
         public DynamicIdentifierNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
         {
         }
 
-        public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
+        protected override Expression GetPropertyExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var key = this.Text.Trim(new[] { '[', ']' });
-            var property = Expression.Call(buildLinqExpressionParameters.Item, "get_Item", null, Expression.Constant(key));
-
-            var child = this.ChildNodes.FirstOrDefault();
-            if (child != null)
-            {
-                var newBuildLinqExpressionParameters =
-                    new BuildLinqExpressionParameters(
-                        buildLinqExpressionParameters.Query,
-                        buildLinqExpressionParameters.InputType,
-                        buildLinqExpressionParameters.Expression,
-                        property);
-
-                return child.BuildLinqExpression(newBuildLinqExpressionParameters);
-            }
-
-            return property;
+            var key = this.Text.Trim('[', ']');
+            return Expression.Call(buildLinqExpressionParameters.Item, "get_Item", null, Expression.Constant(key));
         }
     }
 }

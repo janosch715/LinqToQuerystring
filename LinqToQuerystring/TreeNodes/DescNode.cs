@@ -9,7 +9,7 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class DescNode : ExplicitOrderByBase
+    public class DescNode : BaseExplicitOrderByNode
     {
         public DescNode(IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload, treeNodeFactory)
@@ -22,11 +22,11 @@
             var childExpression = buildLinqExpressionParameters.Expression;
 
             var temp = parameter;
-
             foreach (var child in this.ChildNodes)
             {
                 var newBuildLinqExpressionParameters =
                     new BuildLinqExpressionParameters(
+                        buildLinqExpressionParameters.Configuration,
                         buildLinqExpressionParameters.Query,
                         buildLinqExpressionParameters.InputType,
                         childExpression,
@@ -39,7 +39,9 @@
             Debug.Assert(childExpression != null, "childExpression should never be null");
 
             var methodName = "OrderByDescending";
-            if ((buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("DbQueryProvider") || buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
+            if ((buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("DbQueryProvider") 
+                || buildLinqExpressionParameters.Query.Provider.GetType().Name.Contains("MongoQueryProvider")) 
+                && buildLinqExpressionParameters.IsFirstOrderBy == false)
             {
                 methodName = "ThenByDescending";
             }

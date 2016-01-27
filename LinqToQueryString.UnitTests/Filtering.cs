@@ -7,7 +7,7 @@
     using LinqToQueryString.Tests;
 
     using LinqToQuerystring;
-
+    using LinqToQuerystring.TreeNodes;
     using Machine.Specifications;
 
     public abstract class Filtering
@@ -36,7 +36,7 @@
 
             concreteCollection = new List<ConcreteClass>
             {
-                InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0], "Apple"),
+                InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0], "Apple", "ParentApple"),
                 InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, 0.3m, guidArray[2]),
                 InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, 0.5m, guidArray[4]),
                 InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, 0.3m, guidArray[2]),
@@ -417,7 +417,7 @@
 
         private It should_return_two_records = () => result.Count().ShouldEqual(11);
 
-        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > -40000000000);
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > 0);
     }
 
     public class When_using_not_eq_filter_on_a_single_long : Filtering
@@ -1672,6 +1672,15 @@
         private It should_return_one_records = () => result.Count().ShouldEqual(1);
 
         private It should_only_return_records_where_name_of_edge_case_class_is_apple = () => result.ShouldEachConformTo(o => o.EdgeCaseClass.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_on_a_deep_property_path_and_ignring_null : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring(
+            "?$filter=Parent/Name eq 'ParentApple'",
+            configuration: new BuildLinqExpressionConfiguration(true));
+
+        private It should_return_one_records = () => result.Count().ShouldEqual(1);
     }
 
     #endregion

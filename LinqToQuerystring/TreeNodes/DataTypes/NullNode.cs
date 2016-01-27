@@ -19,5 +19,10 @@
         {
             return Expression.Constant(null);
         }
+
+        public override object RetrieveStaticValue()
+        {
+            return null;
+        }
     }
 }

@@ -22,29 +22,33 @@
                 "Orderby is just a placeholder and should be handled differently in Extensions.cs");
         }
 
-        public override IQueryable ModifyQuery(IQueryable query, Type inputType)
+        public override IQueryable ModifyQuery(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
-            var queryresult = query;
-            var orderbyChildren = this.Children.Cast<ExplicitOrderByBase>();
+            var queryresult = buildLinqExpressionParameters.Query;
+            var orderbyChildren = this.Children.Cast<BaseExplicitOrderByNode>();
 
             if (!queryresult.Provider.GetType().Name.Contains("DbQueryProvider") && !queryresult.Provider.GetType().Name.Contains("MongoQueryProvider"))
             {
                 orderbyChildren = orderbyChildren.Reverse();
             }
 
-            var explicitOrderByNodes = orderbyChildren as IList<ExplicitOrderByBase> ?? orderbyChildren.ToList();
-            explicitOrderByNodes.First().IsFirstChild = true;
+            var explicitOrderByNodes = orderbyChildren as IList<BaseExplicitOrderByNode> ?? orderbyChildren.ToList();
+
+            var isFirst = true;
 
             foreach (var child in explicitOrderByNodes)
             {
                 var newBuildLinqExpressionParameters =
                     new BuildLinqExpressionParameters(
+                        buildLinqExpressionParameters.Configuration,
                         queryresult,
-                        inputType,
+                        buildLinqExpressionParameters.InputType,
                         queryresult.Expression,
-                        null);
+                        null,
+                        isFirst);
 
                 queryresult = queryresult.Provider.CreateQuery(child.BuildLinqExpression(newBuildLinqExpressionParameters));
+                isFirst = false;
             }
 
             return queryresult;

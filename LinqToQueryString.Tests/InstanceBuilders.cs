@@ -14,7 +14,7 @@ namespace LinqToQueryString.Tests
             return new EdgeCaseClass { Name = name, Date = date, Age = age, Complete = complete };
         }
 
-        public static ConcreteClass BuildConcrete(string name, int age, DateTime date, bool complete, long population, double value, float cost, byte code, decimal score, Guid guid, string edgeCaseClassString = null)
+        public static ConcreteClass BuildConcrete(string name, int age, DateTime date, bool complete, long population, double value, float cost, byte code, decimal score, Guid guid, string edgeCaseClassString = null, string parentString = null)
         {
             return new ConcreteClass
             {
@@ -31,6 +31,10 @@ namespace LinqToQueryString.Tests
                 EdgeCaseClass = edgeCaseClassString == null ? new EdgeCaseClass() : new EdgeCaseClass()
                 {
                     Name = edgeCaseClassString
+                },
+                Parent = parentString == null ? null : new ConcreteClass()
+                {
+                    Name = parentString
                 }
             };
         }

@@ -24,10 +24,5 @@
 
             return ApplyEnsuringNullablesHaveValues(Expression.GreaterThan, leftExpression, rightExpression);
         }
-
-        public override object RetrieveStaticValue()
-        {
-            throw new NotSupportedException("The node has no static value.");
-        }
     }
 }

@@ -38,22 +38,11 @@
 
             var parameter = Expression.Parameter(underlyingType, alias);
 
-            var newBuildLinqExpressionParameters =
-                new BuildLinqExpressionParameters(
-                    buildLinqExpressionParameters.Query,
-                    buildLinqExpressionParameters.InputType,
-                    buildLinqExpressionParameters.Expression,
-                    parameter);
+            var newBuildLinqExpressionParameters = buildLinqExpressionParameters.ChangeItem(parameter);
 
-            var lambda = Expression.Lambda(
-                filter.BuildLinqExpression(newBuildLinqExpressionParameters), parameter);
+            var lambda = Expression.Lambda(filter.BuildLinqExpression(newBuildLinqExpressionParameters), parameter);
 
             return Expression.Call(typeof(Enumerable), "Any", new[] { underlyingType }, property, lambda);
-        }
-
-        public override object RetrieveStaticValue()
-        {
-            throw new NotSupportedException("The node has no static value.");
         }
     }
 }

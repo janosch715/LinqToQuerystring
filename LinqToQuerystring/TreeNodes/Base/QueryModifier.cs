@@ -16,9 +16,9 @@ namespace LinqToQuerystring.TreeNodes.Base
         public override Expression BuildLinqExpression(BuildLinqExpressionParameters buildLinqExpressionParameters)
         {
             throw new NotSupportedException(
-               string.Format("{0} is just a placeholder and should be handled differently in Extensions.cs", this.GetType().Name));
+                $"{this.GetType().Name} is just a placeholder and should be handled differently in Extensions.cs");
         }
 
-        public abstract IQueryable ModifyQuery(IQueryable query, Type inputType);
+        public abstract IQueryable ModifyQuery(BuildLinqExpressionParameters buildLinqExpressionParameters);
     }
 }

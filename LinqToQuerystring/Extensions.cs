@@ -11,23 +11,31 @@
 
     using LinqToQuerystring.TreeNodes;
     using LinqToQuerystring.TreeNodes.Base;
+    using Visitor;
 
     public static class Extensions
     {
+        private static readonly LingToQueryRootNodesVisitor LingToQueryRootNodesVisitor = 
+            new LingToQueryRootNodesVisitor();
+
+        private static readonly  LingToQueryOrderByNodeVisitor LingToQueryOrderByNodeVisitor = 
+            new LingToQueryOrderByNodeVisitor(LingToQueryRootNodesVisitor);
+
         public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
         {
             return (TResult)LinqToQuerystring(query, typeof(T), queryString, forceDynamicProperties, maxPageSize);
         }
 
-        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
+        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1, BuildLinqExpressionConfiguration configuration = null)
         {
-            return (IQueryable<T>)LinqToQuerystring(query, typeof(T), queryString, forceDynamicProperties, maxPageSize);
+            return (IQueryable<T>)LinqToQuerystring(query, typeof(T), queryString, forceDynamicProperties, maxPageSize, configuration);
         }
 
-        public static object LinqToQuerystring(this IQueryable query, Type inputType, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
+        public static object LinqToQuerystring(this IQueryable query, Type inputType, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1, BuildLinqExpressionConfiguration configuration = null)
         {
             var queryResult = query;
             var constrainedQuery = query;
+            var expressionConfiguration = configuration ?? new BuildLinqExpressionConfiguration();
 
             if (query == null)
             {
@@ -78,13 +86,13 @@
             {
                 if (!(singleNode is SelectNode) && !(singleNode is InlineCountNode))
                 {
-                    BuildQuery(singleNode, inputType, ref queryResult, ref constrainedQuery);
+                    BuildQuery(singleNode, inputType, ref queryResult, ref constrainedQuery, expressionConfiguration);
                     return constrainedQuery;
                 }
 
                 if (singleNode is SelectNode)
                 {
-                    return ProjectQuery(constrainedQuery, inputType, singleNode);
+                    return ProjectQuery(constrainedQuery, inputType, singleNode, expressionConfiguration);
                 }
 
                 return PackageResults(queryResult, constrainedQuery);
@@ -99,13 +107,13 @@
                 // These should always come first
                 foreach (var node in children.Where(o => !(o is SelectNode) && !(o is InlineCountNode)))
                 {
-                    BuildQuery(node, inputType, ref queryResult, ref constrainedQuery);
+                    BuildQuery(node, inputType, ref queryResult, ref constrainedQuery, expressionConfiguration);
                 }
 
                 var selectNode = children.FirstOrDefault(o => o is SelectNode);
                 if (selectNode != null)
                 {
-                    constrainedQuery = ProjectQuery(constrainedQuery, inputType, selectNode);
+                    constrainedQuery = ProjectQuery(constrainedQuery, inputType, selectNode, expressionConfiguration);
                 }
 
                 var inlineCountNode = children.FirstOrDefault(o => o is InlineCountNode);
@@ -118,7 +126,7 @@
             return constrainedQuery;
         }
 
-        private static void BuildQuery(TreeNode node, Type inputType, ref IQueryable queryResult, ref IQueryable constrainedQuery)
+        private static void BuildQuery(TreeNode node, Type inputType, ref IQueryable queryResult, ref IQueryable constrainedQuery, BuildLinqExpressionConfiguration configuration)
         {
             var type = queryResult.Provider.GetType().Name;
 
@@ -136,31 +144,50 @@
                 var modifier = node as QueryModifier;
                 if (modifier != null)
                 {
-                    queryResult = modifier.ModifyQuery(queryResult, inputType);
+                    var newBuildLinqExpressionParameters =
+                        new BuildLinqExpressionParameters(
+                            configuration,
+                            queryResult,
+                            inputType,
+                            null,
+                            null);
+
+                    queryResult = LingToQueryOrderByNodeVisitor.Visit(modifier, newBuildLinqExpressionParameters);
                 }
                 else
                 {
                     var newBuildLinqExpressionParameters =
                         new BuildLinqExpressionParameters(
+                            configuration, 
                             queryResult,
                             inputType,
                             queryResult.Expression,
                             null);
 
-                    queryResult = queryResult.Provider.CreateQuery(
-                        node.BuildLinqExpression(newBuildLinqExpressionParameters));
+                    queryResult = 
+                        queryResult.Provider.CreateQuery(
+                            LingToQueryRootNodesVisitor.Visit(node, newBuildLinqExpressionParameters));
                 }
             }
 
             var queryModifier = node as QueryModifier;
             if (queryModifier != null)
             {
-                constrainedQuery = queryModifier.ModifyQuery(constrainedQuery, inputType);
+                var newBuildLinqExpressionParameters =
+                    new BuildLinqExpressionParameters(
+                        configuration,
+                        constrainedQuery,
+                        inputType,
+                        null,
+                        null);
+
+                constrainedQuery = LingToQueryOrderByNodeVisitor.Visit(queryModifier, newBuildLinqExpressionParameters);
             }
             else
             {
                 var newBuildLinqExpressionParameters =
                         new BuildLinqExpressionParameters(
+                            configuration,
                             constrainedQuery,
                             inputType,
                             constrainedQuery.Expression,
@@ -168,11 +195,11 @@
 
                 constrainedQuery =
                     constrainedQuery.Provider.CreateQuery(
-                        node.BuildLinqExpression(newBuildLinqExpressionParameters));
+                        LingToQueryRootNodesVisitor.Visit(node, newBuildLinqExpressionParameters));
             }
         }
 
-        private static IQueryable ProjectQuery(IQueryable constrainedQuery, Type inputType, TreeNode node)
+        private static IQueryable ProjectQuery(IQueryable constrainedQuery, Type inputType, TreeNode node, BuildLinqExpressionConfiguration configuration)
         {
             // TODO: Find a solution to the following:
             // Currently the only way to perform the SELECT part of the query is to call ToList and then project onto a dictionary. Two main problems:
@@ -184,12 +211,14 @@
 
             var newBuildLinqExpressionParameters =
                 new BuildLinqExpressionParameters(
+                    configuration,
                     result,
                     inputType,
                     result.Expression,
                     null);
 
-            return result.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(newBuildLinqExpressionParameters));
+            return result.Provider.CreateQuery<Dictionary<string, object>>(
+                LingToQueryRootNodesVisitor.Visit(node, newBuildLinqExpressionParameters));
         }
 
         private static object PackageResults(IQueryable query, IQueryable constrainedQuery)

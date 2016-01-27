@@ -58,12 +58,14 @@
     <Compile Include="TreeNodes\AliasNode.cs" />
     <Compile Include="TreeNodes\AndNode.cs" />
     <Compile Include="TreeNodes\AscNode.cs" />
-    <Compile Include="TreeNodes\Base\ExplicitOrderByBase.cs" />
+    <Compile Include="TreeNodes\Base\BaseExplicitOrderByNode.cs" />
+    <Compile Include="TreeNodes\Base\BaseIdentifierNode.cs" />
     <Compile Include="TreeNodes\Base\QueryModifier.cs" />
     <Compile Include="TreeNodes\Base\SingleChildNode.cs" />
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
-    <Compile Include="TreeNodes\BuildLinqExpressionParameters.cs" />
+    <Compile Include="BuildLinqExpressionConfiguration.cs" />
+    <Compile Include="BuildLinqExpressionParameters.cs" />
     <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
     <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
     <Compile Include="TreeNodes\DataTypes\DecimalNode.cs" />
@@ -81,7 +83,7 @@
     <Compile Include="TreeNodes\Functions\YearNode.cs" />
     <Compile Include="TreeNodes\Functions\YearsNode.cs" />
     <Compile Include="TreeNodes\IgnoredNode.cs" />
-    <Compile Include="TreeNodes\NullNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\NullNode.cs" />
     <Compile Include="TreeNodes\DataTypes\GuidNode.cs" />
     <Compile Include="TreeNodes\DataTypes\SingleNode.cs" />
     <Compile Include="TreeNodes\DataTypes\DoubleNode.cs" />
@@ -112,8 +114,12 @@
     <Compile Include="TreeNodes\DataTypes\StringNode.cs" />
     <Compile Include="TreeNodes\TopNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TreeNodes\TreeNodeFactory.cs" />
+    <Compile Include="TreeNodeFactory.cs" />
     <Compile Include="Utils\CustomNodeMappings.cs" />
+    <Compile Include="Visitor\BaseLinqToQueryStringVisitor.cs" />
+    <Compile Include="Visitor\LingToQueryChildNodesVisitor.cs" />
+    <Compile Include="Visitor\LingToQueryOrderByNodeVisitor.cs" />
+    <Compile Include="Visitor\LingToQueryRootNodesVisitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Antlr3 Include="LinqToQuerystring.g">

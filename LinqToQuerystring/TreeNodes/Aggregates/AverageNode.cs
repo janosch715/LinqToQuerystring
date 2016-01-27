@@ -20,10 +20,5 @@
             var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(buildLinqExpressionParameters);
             return Expression.Call(typeof(Enumerable), "Average", null, property);
         }
-
-        public override object RetrieveStaticValue()
-        {
-            throw new NotSupportedException("The node has no static value.");
-        }
     }
 }
