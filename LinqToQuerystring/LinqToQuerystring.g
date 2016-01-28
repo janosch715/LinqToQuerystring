@@ -108,7 +108,7 @@ orderpropertyname
 constant:	(INT^ | BOOL^ | STRING^ | DATETIME^ | LONG^ | SINGLE^ | DECIMAL^ | DOUBLE^ | GUID^ | BYTE^ | NULL^);
 
 propertyname[bool subquery]
-	:	(identifierpart[subquery] -> identifierpart) ('/' next=subpropertyname[false] -> ^($propertyname $next))?;
+	:	(identifierpart[subquery] -> identifierpart) (('/' | '.') next=subpropertyname[false] -> ^($propertyname $next))?;
 
 subpropertyname[bool subquery]
 	:	propertyname[false];
@@ -121,6 +121,7 @@ identifierpart[bool subquery]
 filteroperator
 	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;
 	
+
 ASSIGN
 	: 	'=';
 

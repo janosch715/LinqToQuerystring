@@ -81,6 +81,11 @@
 
             var result = parser.prog();
 
+            if (parser.NumberOfSyntaxErrors > 0)
+            {
+                throw new ArgumentException("Error parsing the OData query.");
+            }
+
             var singleNode = result.Tree as TreeNode;
             if (singleNode != null && !(singleNode is IdentifierNode))
             {

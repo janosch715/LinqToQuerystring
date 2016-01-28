@@ -1674,13 +1674,31 @@
         private It should_only_return_records_where_name_of_edge_case_class_is_apple = () => result.ShouldEachConformTo(o => o.EdgeCaseClass.Name == "Apple");
     }
 
-    public class When_using_eq_filter_on_a_single_string_on_a_deep_property_path_and_ignring_null : Filtering
+    public class When_using_eq_filter_on_a_single_string_on_a_deep_property_path_and_ignoring_null : Filtering
     {
         private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring(
             "?$filter=Parent/Name eq 'ParentApple'",
             configuration: new BuildLinqExpressionConfiguration(true));
 
         private It should_return_one_records = () => result.Count().ShouldEqual(1);
+    }
+
+    public class When_using_contains_filter_on_a_single_string_on_a_deep_property_path_and_ignoring_null : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring(
+            "?$filter=contains('Apple',Parent/Name)",
+            configuration: new BuildLinqExpressionConfiguration(true));
+
+        private It should_return_one_records = () => result.Count().ShouldEqual(1);
+    }
+
+    public class When_using_eq_filter_on_dot_property_path : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=EdgeCaseClass.Name eq 'Apple'");
+
+        private It should_return_one_records = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_of_edge_case_class_is_apple = () => result.ShouldEachConformTo(o => o.EdgeCaseClass.Name == "Apple");
     }
 
     #endregion

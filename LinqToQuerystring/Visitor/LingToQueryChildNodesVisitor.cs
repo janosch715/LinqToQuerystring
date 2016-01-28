@@ -213,19 +213,28 @@ namespace LinqToQuerystring.Visitor
                     rightExpression = Expression.Convert(rightExpression, typeof(string));
                 }
 
+                Expression functionExpression;
                 if (node is StartsWithNode)
                 {
-                    return Expression.Call(leftExpression, "StartsWith", null, rightExpression);
+                    functionExpression = Expression.Call(leftExpression, "StartsWith", null, rightExpression);
                 }
-
-                if (node is SubstringOfNode)
+                else if (node is SubstringOfNode)
                 {
                     var ignoreCaseParameter = Expression.Constant(StringComparison.InvariantCultureIgnoreCase);
                     var indexOf = Expression.Call(rightExpression, "IndexOf", null, leftExpression, ignoreCaseParameter);
-                    return Expression.GreaterThanOrEqual(indexOf, Expression.Constant(0));
+                    functionExpression = Expression.GreaterThanOrEqual(indexOf, Expression.Constant(0));
                 }
-
-                return Expression.Call(leftExpression, "EndsWith", null, rightExpression);
+                else
+                {
+                    functionExpression = Expression.Call(leftExpression, "EndsWith", null, rightExpression);
+                }
+                
+                return Expression.Condition(
+                    Expression.OrElse(
+                        Expression.Equal(leftExpression, Expression.Constant(null)), 
+                        Expression.Equal(rightExpression, Expression.Constant(null))),
+                    Expression.Constant(false),
+                    functionExpression);
             }
 
             throw new NotSupportedException($"The requested function {node.GetType().Name} is not supported.");
