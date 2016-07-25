@@ -528,26 +528,39 @@ namespace LinqToQuerystring.Visitor
         private static Expression MapAndCast(Expression from, Expression to)
         {
             var mapped = Configuration.TypeConversionMap(from.Type, to.Type);
-            if (mapped != from.Type)
+            if (mapped != from.Type && mapped != to.Type)
             {
                 from = CastIfNeeded(from, mapped);
             }
-
+            
             return CastIfNeeded(from, to.Type);
         }
 
-        protected static Expression CastIfNeeded(Expression expression, Type type)
+        private static Expression CastIfNeeded(Expression expression, Type type)
         {
             var converted = expression;
-            if (!type.IsAssignableFrom(expression.Type))
+
+            if (expression.Type == typeof(object) && type.IsValueType && Nullable.GetUnderlyingType(type) == null)
             {
-                var convertToType = Configuration.TypeConversionMap(expression.Type, type);
-                converted = Expression.Convert(expression, convertToType);
+                var nullableType = typeof(Nullable<>).MakeGenericType(type);
+                
+                converted = Expression.Convert(expression, nullableType);
+            }
+            else if (type.IsAssignableFrom(expression.Type) == false)
+            {
+                converted = Expression.Convert(expression, type);
             }
 
             return converted;
         }
 
+        /// <summary>
+        /// <c> if (leftValue != null  </c>
+        /// </summary>
+        /// <param name="produces"></param>
+        /// <param name="leftExpression"></param>
+        /// <param name="rightExpression"></param>
+        /// <returns></returns>
         protected static Expression ApplyEnsuringNullablesHaveValues(Func<Expression, Expression, Expression> produces, Expression leftExpression, Expression rightExpression)
         {
             var leftExpressionIsNullable = (Nullable.GetUnderlyingType(leftExpression.Type) != null);

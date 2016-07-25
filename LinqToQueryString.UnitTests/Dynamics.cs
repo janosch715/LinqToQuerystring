@@ -20,21 +20,29 @@
                 item1["Age"] = 23;
                 item1["Name"] = "Karl";
                 item1["Score"] = 0.1m;
+                item1["Guid"] = new Guid?(Guid.Empty);
+                item1["Int"] = new int?(5);
 
                 var item2 = new Dictionary<string, object>();
                 item2["Age"] = 25;
                 item2["Name"] = "Kathryn";
                 item2["Score"] = 0.2m;
+                item2["Guid"] = new Guid?();
+                item2["Int"] = new int?();
 
                 var item3 = new Dictionary<string, object>();
                 item3["Age"] = 28;
                 item3["Name"] = "Pete";
                 item3["Score"] = 0.3m;
+                item3["Guid"] = new Guid?();
+                item3["Int"] = new int?();
 
                 var item4 = new Dictionary<string, object>();
                 item4["Age"] = 17;
                 item4["Name"] = "Dominic";
                 item4["Score"] = 0.4m;
+                item4["Guid"] = new Guid?();
+                item4["Int"] = new int?();
 
                 collection = new List<Dictionary<string, object>> { item1, item2, item3, item4 };
             };
@@ -57,6 +65,20 @@
     public class When_using_eq_filter_on_a_dynamic_type_decimal_property : Dynamics
     {
         private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$filter=[Score] eq 0.4m");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(1);
+    }
+
+    public class When_using_eq_filter_on_a_dynamic_type_nullable_guid_property : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring($"$filter=[Guid] eq guid'{Guid.Empty}'");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(1);
+    }
+
+    public class When_using_eq_filter_on_a_dynamic_type_nullable_int_property : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring($"$filter=[Int] eq 5");
 
         private It should_return_one_result = () => result.Count().ShouldEqual(1);
     }

@@ -2,12 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
-    using LinqToQueryString.Tests;
-
     using LinqToQuerystring;
 
     using Machine.Specifications;
+    using Utils;
 
     public class InlineCount : Projection
     {

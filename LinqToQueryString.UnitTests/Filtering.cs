@@ -3,12 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using LinqToQueryString.Tests;
-
     using LinqToQuerystring;
     using LinqToQuerystring.TreeNodes;
     using Machine.Specifications;
+    using Utils;
 
     public abstract class Filtering
     {
@@ -1550,6 +1548,15 @@
     }
 
     public class When_using_eq_filter_on_a_single_nullable_guid : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring(string.Format("?$filter=Guid eq guid'{0}'", guidArray[0]));
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Guid == guidArray[0]);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_guid_indexed_property : Filtering
     {
         private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring(string.Format("?$filter=Guid eq guid'{0}'", guidArray[0]));
 
