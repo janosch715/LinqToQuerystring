@@ -7,6 +7,7 @@
     using LinqToQuerystring;
 
     using Machine.Specifications;
+    using Utils;
 
     public abstract class Dynamics
     {
@@ -22,6 +23,7 @@
                 item1["Score"] = 0.1m;
                 item1["Guid"] = new Guid?(Guid.Empty);
                 item1["Int"] = new int?(5);
+                item1["GuidWrapper"] = new GuidWrapper(Guid.Empty);
 
                 var item2 = new Dictionary<string, object>();
                 item2["Age"] = 25;
@@ -29,6 +31,7 @@
                 item2["Score"] = 0.2m;
                 item2["Guid"] = new Guid?();
                 item2["Int"] = new int?();
+                item2["GuidWrapper"] = null;
 
                 var item3 = new Dictionary<string, object>();
                 item3["Age"] = 28;
@@ -36,6 +39,7 @@
                 item3["Score"] = 0.3m;
                 item3["Guid"] = new Guid?();
                 item3["Int"] = new int?();
+                item3["GuidWrapper"] = null;
 
                 var item4 = new Dictionary<string, object>();
                 item4["Age"] = 17;
@@ -43,6 +47,7 @@
                 item4["Score"] = 0.4m;
                 item4["Guid"] = new Guid?();
                 item4["Int"] = new int?();
+                item4["GuidWrapper"] = null;
 
                 collection = new List<Dictionary<string, object>> { item1, item2, item3, item4 };
             };
@@ -72,6 +77,14 @@
     public class When_using_eq_filter_on_a_dynamic_type_nullable_guid_property : Dynamics
     {
         private Because of = () => result = collection.AsQueryable().LinqToQuerystring($"$filter=[Guid] eq guid'{Guid.Empty}'");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(1);
+    }
+
+    [Ignore("Does not work yet")]
+    public class When_using_eq_filter_on_a_dynamic_type_guid_wrapper_property : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring($"$filter=[GuidWrapper] eq guid'{Guid.Empty}'");
 
         private It should_return_one_result = () => result.Count().ShouldEqual(1);
     }

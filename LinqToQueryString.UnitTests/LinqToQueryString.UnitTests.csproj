@@ -82,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ComplexClass.cs" />
     <Compile Include="Utils\ConcreteClass.cs" />
+    <Compile Include="Utils\GuidWrapper.cs" />
     <Compile Include="Utils\IndexedClass.cs" />
     <Compile Include="Utils\InstanceBuilders.cs" />
     <Compile Include="Utils\RandomDataGenerators.cs" />

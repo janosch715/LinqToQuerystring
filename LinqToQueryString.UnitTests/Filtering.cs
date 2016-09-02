@@ -1709,4 +1709,15 @@
     }
 
     #endregion
+
+    #region filter_on_guid_wrapper_tests
+
+    public class When_using_eq_filter_on_guid_wrapper_property : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring($"$filter=GuidWrapper eq guid'{guidArray[0]}'");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(3);
+    }
+
+    #endregion
 }

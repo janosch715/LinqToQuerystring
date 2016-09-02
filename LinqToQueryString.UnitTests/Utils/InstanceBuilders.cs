@@ -28,6 +28,7 @@ namespace LinqToQueryString.UnitTests.Utils
                 Code = code,
                 Score = score,
                 Guid = guid,
+                GuidWrapper = new GuidWrapper(guid),
                 EdgeCaseClass = edgeCaseClassString == null ? new EdgeCaseClass() : new EdgeCaseClass()
                 {
                     Name = edgeCaseClassString

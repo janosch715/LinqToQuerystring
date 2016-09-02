@@ -20,6 +20,8 @@
 
         public int Age { get; set; }
 
+        public GuidWrapper GuidWrapper { get; set; }
+
         public List<EdgeCaseClass> Children { get; set; }
 
         public IEnumerable<string> StringCollection { get; set; }
